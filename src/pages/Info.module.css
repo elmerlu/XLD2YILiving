@@ -1,0 +1,135 @@
+.header {
+    padding: 4rem 0 2rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-main);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    width: fit-content;
+}
+
+.icon {
+    color: var(--color-primary);
+}
+
+.card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.list {
+    list-style: none;
+}
+
+.list li {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.date {
+    font-family: monospace;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    background-color: #EDF2F7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.itemTitle {
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.downloadCard {
+    text-align: center;
+}
+
+.downloadCard h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+}
+
+.downloadCard p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.details {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.details summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    /* Hide default arrow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details summary::-webkit-details-marker {
+    display: none;
+}
+
+.details p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.details[open] summary {
+    color: var(--color-primary);
+}

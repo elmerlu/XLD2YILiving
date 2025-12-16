@@ -1,0 +1,124 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.block {
+    aspect-ratio: 16/9;
+    /* Or 4/3 depending on preference */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--block-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    transition: transform 0.3s ease;
+    border-radius: var(--radius-md);
+}
+
+/* Background pattern placeholder since we don't have images yet */
+.block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    opacity: 0.2;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+/* Pseudo-element for dark overlay on hover */
+.block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.block:hover::after {
+    opacity: 1;
+}
+
+.desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 80%;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Hover Effects */
+.block:hover .title {
+    transform: translateY(-20px);
+    /* Move title up */
+    font-size: 1.7rem;
+    /* Slightly smaller to fit */
+}
+
+.block:hover .desc {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .block {
+        aspect-ratio: auto;
+        min-height: 300px;
+    }
+}
