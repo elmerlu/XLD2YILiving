@@ -30,7 +30,6 @@
 
   /* Spacing & Layout */
   --container-width: 1400px;
-  /* Increased to allow more room on large screens */
   --container-desktop-width: 75vw;
   --header-height: 70px;
   --radius-md: 12px;
@@ -69,7 +68,13 @@ button {
 
 /* Utilities */
 .container {
-  max-width: var(--container-width);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--container-desktop-width);
+  }
 }
