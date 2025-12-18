@@ -1,9 +1,14 @@
 .container {
     padding: 4rem 1.5rem;
-    max-width: 1280px;
-    /* Increased from 1000px for better desktop utilization */
-    margin: 0 auto;
     width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-desktop-width);
+    }
 }
 
 .hero {

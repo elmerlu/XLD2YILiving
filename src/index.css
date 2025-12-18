@@ -29,8 +29,9 @@
   --font-display: 'jf-openhuninn', var(--font-sans);
 
   /* Spacing & Layout */
-  --container-width: 1080px;
-  /* Reduced to ~90% of 1200px as requested */
+  --container-width: 1400px;
+  /* Increased to allow more room on large screens */
+  --container-desktop-width: 75vw;
   --header-height: 70px;
   --radius-md: 12px;
   --radius-lg: 20px;
