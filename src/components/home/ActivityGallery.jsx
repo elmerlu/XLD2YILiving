@@ -129,24 +129,14 @@ const ActivityGallery = () => {
                     {/* Image Area */}
                     <div className={styles.imageArea}>
                         <img
-                            key={currentActivity.id}
+                            key={currentIndex}
                             src={currentActivity.image}
                             alt={currentActivity.title}
-                            className={styles.imageSlide}
-                            style={{
-                                animation: 'fadeIn 0.8s ease'
-                            }}
+                            className={`${styles.imageSlide} ${styles.fadeInEffect}`}
                         />
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: scale(1.05); }
-                    to { opacity: 1; transform: scale(1); }
-                }
-            `}</style>
         </section>
     )
 }
