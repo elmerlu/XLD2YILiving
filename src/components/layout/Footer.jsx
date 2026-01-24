@@ -38,9 +38,6 @@ const Footer = () => {
                         <a href="https://www.facebook.com/xinglongph2" target="_blank" rel="noopener noreferrer">
                             <Facebook size={16} style={{ marginRight: '5px' }} /> FaceBook
                         </a>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form" target="_blank" rel="noopener noreferrer">
-                            <MessageCircle size={16} style={{ marginRight: '5px' }} /> 問題回報
-                        </a>
                     </div>
                 </div>
 

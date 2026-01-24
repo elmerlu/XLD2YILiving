@@ -25,10 +25,11 @@ const features = [
     },
     {
         id: 4,
-        title: '最新消息 Highlight！',
-        description: '施工中',
-        link: '#',
-        color: '#38B2AC' // Teal
+        title: '生活募集令 - 共創生活記憶\n<small style="font-size: 0.6em; display: block; margin-top: 5px;">匯聚生活智慧，典藏獨家記憶</small>',
+        description: '募集你的「知識」與「故事」。<br>我們募集實用的生活懶人包，讓新鄰居輕鬆上手；<br>我們也募集珍貴的社宅故事，不讓記憶隨風而散。',
+        link: 'https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form',
+        color: '#6B46C1', // Purple
+        badge: '投稿'
     }
 ]
 
@@ -42,6 +43,7 @@ const FeatureGrid = () => {
                     className={styles.block}
                     style={{ '--block-color': feature.color }}
                 >
+                    {feature.badge && <div className={styles.badge}>{feature.badge}</div>}
                     <div className={styles.content}>
                         <h3 className={styles.title} dangerouslySetInnerHTML={{ __html: feature.title.replace(/\n/g, '<br/>') }} />
                         <p className={styles.desc} dangerouslySetInnerHTML={{ __html: feature.description }} />
