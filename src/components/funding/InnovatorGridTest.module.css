@@ -1,0 +1,159 @@
+/* Inherit basic layout from original but modify card style */
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    /* Increased gap for polaroid style */
+}
+
+@media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    /* Polaroid Style: Padding serves as the white border */
+    padding: 1.2rem;
+    /* Subtle border outline */
+    border: 1px solid #D1D5DB;
+    /* Box shadow for depth */
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tape Effect */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    width: 25px;
+    height: 60px;
+    background-color: #F6AD55;
+    /* Orange Tape Color */
+    opacity: 0.9;
+    transform: rotate(5deg);
+    z-index: 10;
+    /* Rough edges for tape look */
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%, 5% 90%, 0% 85%, 3% 80%, 0% 75%, 4% 70%, 1% 65%, 3% 60%, 0% 55%, 3% 50%, 1% 45%, 4% 40%, 1% 35%, 3% 30%, 0% 25%, 3% 20%, 1% 15%, 4% 10%, 0% 5%);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Variant for special (no photo) cards */
+.specialCard {
+    background: linear-gradient(to bottom right, #fff, #FFF5F5);
+    border: 2px dashed var(--color-primary);
+}
+
+/* Hide standard tape for special cards if we want a different look, or keep it */
+.specialCard::before {
+    background-color: var(--color-primary);
+    /* Pink Tape */
+}
+
+.imageContainer {
+    width: 100%;
+    /* 1:1 Aspect ratio or slightly specific as per design */
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    /* Slight radius for the photo itself */
+}
+
+.innovatorImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.1);
+    /* Slight vintage feel */
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center alignment */
+    text-align: center;
+}
+
+.headerInfo {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.idLabel {
+    font-family: 'Times New Roman', serif;
+    /* Serif font for "XL06" look */
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #4A5568;
+    margin-right: 0.5rem;
+}
+
+.name {
+    display: inline;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.nickname {
+    color: #718096;
+    font-size: 1rem;
+}
+
+.description {
+    font-size: 1rem;
+    color: #2D3748;
+    line-height: 1.8;
+    /* Increased line height for readability */
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    /* Or center? Image shows justified/left but container is centered? Let's try left/justify for text block */
+    text-align-last: center;
+    /* Center the last line maybe? width 100% */
+}
+
+.groupTag {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #F6AD55;
+    /* Orange text for tag */
+    letter-spacing: 1px;
+}
+
+/* Special case header */
+.noPhotoHeader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF5F5;
+}
+
+.specialIcon {
+    font-size: 3rem;
+}

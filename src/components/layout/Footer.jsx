@@ -1,7 +1,7 @@
 import styles from './Footer.module.css'
 import logoHeaderIcon from '../../assets/logo-header.png'
 import logoFooter from '../../assets/logo.png'
-import { Facebook, Link as LinkIcon, MessageCircle } from 'lucide-react'
+import { Facebook, Link as LinkIcon, Edit } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -29,14 +29,14 @@ const Footer = () => {
 
                     <div className={styles.external}>
                         <h4>相關連結</h4>
-                        <a href="https://xing-long.vercel.app" target="_blank" rel="noopener noreferrer">
-                            舊版參考
-                        </a>
                         <a href="https://linktr.ee/xinglongpages" target="_blank" rel="noopener noreferrer">
                             <LinkIcon size={16} style={{ marginRight: '5px' }} /> linktr.ee
                         </a>
                         <a href="https://www.facebook.com/xinglongph2" target="_blank" rel="noopener noreferrer">
                             <Facebook size={16} style={{ marginRight: '5px' }} /> FaceBook
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form" target="_blank" rel="noopener noreferrer">
+                            <Edit size={16} style={{ marginRight: '5px' }} /> 我要投稿
                         </a>
                     </div>
                 </div>

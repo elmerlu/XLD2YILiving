@@ -26,7 +26,7 @@ const features = [
     {
         id: 4,
         title: '生活募集令 - 共創生活記憶\n<small style="font-size: 0.6em; display: block; margin-top: 5px;">匯聚生活智慧，典藏獨家記憶</small>',
-        description: '募集你的「知識」與「故事」。<br>我們募集實用的生活懶人包，讓新鄰居輕鬆上手；<br>我們也募集珍貴的社宅故事，不讓記憶隨風而散。',
+        description: '我要投知！募集你的「知識」與「故事」。<br>我們募集實用的生活懶人包，讓新鄰居輕鬆上手；<br>我們也募集珍貴的社宅故事，不讓記憶隨風而散。<br><br><span style="font-style: italic; color: #FFF;">🎁 參與徵文，就可獲得青創手作課作機會作為回饋品 !</span>',
         link: 'https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form',
         color: '#6B46C1', // Purple
         badge: '投稿'

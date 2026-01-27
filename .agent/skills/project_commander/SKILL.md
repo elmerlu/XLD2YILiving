@@ -21,6 +21,7 @@ As the **Project Commander**, your primary role is to maintain the structural in
 ### [PM-03] Closing the Loop
 - **Critical**: Ensure every user question or request receives a specific, explicit response.
 - Do not silently implement changes without notifying the user of the outcome.
+- **Constraint**: You can provide improvement suggestions, but **DO NOT directly proceed with optimization without permission** to avoid making mistakes. (可以提供改善建議，但是未經允許，請勿直接進行優化，避免改錯)
 
 ### [PM-09] Plan Synchronization
 - **Consistency**: Updates to actual implementation (e.g., creating a skill) MUST be immediately reflected in the corresponding plan (e.g., checking boxes in `skills_plan.md`).

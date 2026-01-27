@@ -1,6 +1,7 @@
 import fundingIntroImg from '../assets/funding-intro.jpg'
 import Card from '../components/ui/Card'
 import styles from './Funding.module.css'
+import InnovatorGrid from '../components/funding/InnovatorGrid'
 
 const Funding = () => {
     return (
@@ -215,6 +216,8 @@ const Funding = () => {
                     </p>
                 </Card>
 
+
+
                 {/* Section 6: 一起寫下社區的故事 (CTA) */}
                 <Card padding="lg">
                     <h2 className={styles.sectionTitle}>一起寫下社區的故事</h2>
@@ -251,6 +254,11 @@ const Funding = () => {
                             如果你有任何問題或建議，歡迎點擊右下角聯絡我們，或直接到粉絲專頁留言。
                         </p>
                     </div>
+                </Card>
+
+                {/* Section 7: 青創夥伴牆 Innovators Showcase (Final Section) */}
+                <Card padding="lg">
+                    <InnovatorGrid />
                 </Card>
 
             </div>

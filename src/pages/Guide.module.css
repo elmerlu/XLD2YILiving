@@ -1,0 +1,132 @@
+.container {
+    padding: 4rem 1.5rem;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-desktop-width);
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Tabs Navigation */
+.tabContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    /* RWD: Allow wrapping on smaller screens */
+    padding: 0 1rem;
+}
+
+.tabButton {
+    background: white;
+    border: 2px solid transparent;
+    /* Original style */
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 220px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    max-width: 300px;
+    position: relative;
+}
+
+.tabButton:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.tabButton.active {
+    border-color: var(--color-primary);
+    background-color: #FFF5F5;
+    /* Light Red/Pink Tint */
+    box-shadow: var(--shadow-md);
+}
+
+.tabTitle {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+}
+
+.tabDesc {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+.tabButton.active .tabTitle {
+    color: var(--color-primary);
+}
+
+/* Content Area */
+.contentArea {
+    min-height: 400px;
+}
+
+.sectionTitle {
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+/* RWD Optimizations */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .tabContainer {
+        gap: 1rem;
+    }
+
+    .tabButton {
+        padding: 1rem;
+        /* Compact padding for mobile */
+        min-width: 100%;
+        /* Stack vertically on small screens */
+        max-width: 100%;
+        display: flex;
+        /* Horizontal layout for content inside button on mobile? */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tabTitle {
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+    }
+}

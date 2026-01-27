@@ -1,0 +1,212 @@
+/* Inherit basic layout from original but modify card style */
+.sectionTitle {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.sectionTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.gridContainer {
+    display: grid;
+    /* Expanded layout logic: Using negative margins to go wider than parent padding */
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+    /* Responsive columns */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    /* Padding to avoid edge clipping */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .gridContainer {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    /* Polaroid Style: Reduced padding by half as requested */
+    padding: 0.6rem;
+    padding-bottom: 2rem;
+    /* Keep bottom space for text, or reduce slightly? Keeping for now */
+    /* Subtle border outline - Reverted to #DDDDDD based on clarification */
+    border: 1px solid #DDDDDD;
+    /* Box shadow for depth */
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease;
+    height: 100%;
+    /* Fill grid cell height */
+    min-height: 480px;
+    /* Consistent height */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tape Effect Base */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    width: 25px;
+    height: 60px;
+    opacity: 0.9;
+    transform: rotate(5deg);
+    z-index: 10;
+    /* Rough edges for tape look */
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%, 5% 90%, 0% 85%, 3% 80%, 0% 75%, 4% 70%, 1% 65%, 3% 60%, 0% 55%, 3% 50%, 1% 45%, 4% 40%, 1% 35%, 3% 30%, 0% 25%, 3% 20%, 1% 15%, 4% 10%, 0% 5%);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Tape Colors */
+.tapeColor1::before {
+    background-color: #F6AD55;
+}
+
+/* Orange */
+.tapeColor2::before {
+    background-color: #4FD1C5;
+}
+
+/* Teal */
+.tapeColor3::before {
+    background-color: #FC8181;
+}
+
+/* Red/Pink */
+.tapeColor4::before {
+    background-color: #68D391;
+}
+
+/* Green */
+
+.imageContainer {
+    width: 100%;
+    /* 4:3 Aspect ratio */
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    /* Adjusted background color */
+    padding: 5px;
+    /* Thicker white frame - Adjusted to 5px */
+    border: 1px solid #C0C0C0;
+    /* Darker edge for photo */
+    /* Inner shadow for photo depth */
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+}
+
+.innovatorImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.1);
+    /* Slight vintage feel */
+    transition: filter 0.3s ease, transform 0.5s ease;
+}
+
+.card:hover .innovatorImage {
+    filter: sepia(0);
+    transform: scale(1.05);
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center alignment */
+    text-align: center;
+    padding: 0 8px;
+    /* Added inner padding for text as requested */
+}
+
+.headerInfo {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.idLabel {
+    /* Fixed font family to match project style (Huninn) */
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: 1.1rem;
+    color: #718096;
+    margin-right: 0.5rem;
+}
+
+.name {
+    display: inline;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #2d3748);
+}
+
+.nickname {
+    color: #718096;
+    font-size: 1rem;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
+    /* Increased line height for readability */
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-align-last: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* Limit lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.groupTag {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #F6AD55;
+    /* Orange text for tag */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    width: 100%;
+}
+
+/* Placeholder Container */
+.placeholderContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF5F5;
+}

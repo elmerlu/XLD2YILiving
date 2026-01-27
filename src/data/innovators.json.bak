@@ -1,0 +1,236 @@
+[
+  {
+    "id": "XL01",
+    "project_name": "科技暨素養培育親子共學計畫",
+    "name": "胡玫英",
+    "nickname": "妞媽",
+    "description": "舉辦科技及閱讀素養相關親子共學活動，推廣增進科普教育，提升孩子的學習興趣",
+    "activity": "科學素養+親子共學",
+    "image": "/innovators/XL01/XL01.png"
+  },
+  {
+    "id": "XL02",
+    "project_name": "興隆D2 2.0",
+    "name": "尹秀英",
+    "nickname": "JJ",
+    "description": "Hi! 很高興遇見你，秀英(JJ)與淑美母女檔接下來將在社區裡以美食和大家見面，期待能遇見更多社區裡的新鄰居及老朋友，有空歡迎來我們的活動現場坐坐，保證有吃有玩。",
+    "activity": "樂齡極球、美食共餐、興隆選物店到店、親子書房",
+    "image": "/innovators/XL02/XL02.jpg"
+  },
+  {
+    "id": "XL03",
+    "project_name": "五星主廚到你家",
+    "name": "潘小君",
+    "nickname": "小君、主廚",
+    "description": "五星主廚到你家-有一個五心共享廚房，由兩個溫馨家庭攜手經營，擁有五星級主廚，擅長各式料理，經驗豐富，技藝精湛。用心烹調每一道菜，教大家輕鬆做健康美味好料理，傳遞幸福與溫暖的滋味。",
+    "activity": "攤位",
+    "image": "/innovators/XL03/XL03.jpeg"
+  },
+  {
+    "id": "XL04",
+    "project_name": "防災社區-共同安居",
+    "name": "連俊傑",
+    "nickname": "玟秀闆娘",
+    "description": "主辦親子手作、主題活動市集、桌球運動和團購等，等您加入好厝邊的行列。",
+    "activity": "親子手作、主題活動市集、桌球運動",
+    "image": "/innovators/XL04/XL04.jpg"
+  },
+  {
+    "id": "XL05",
+    "project_name": "匯聚情感：社區作伙來",
+    "name": "洪愷伶",
+    "nickname": "愷伶",
+    "description": "以「大人の私塾」為活動主軸，希望能在「社區」創造我們對生活有不同想像與學習的「第三場所」。",
+    "activity": "木柵走讀、空間優化、社區交流",
+    "image": "/innovators/XL05/XL05.jpg"
+  },
+  {
+    "id": "XL06",
+    "project_name": "興隆公宅的「2」三事",
+    "name": "鍾苡紅",
+    "nickname": "紅茶",
+    "description": "經營社團、活化空間、耕耘品牌。\n設有住戶寄/贈物專區「興隆好棧」、社區專屬健身房「興隆窩GYM」，及周周揪運動的LINE群組「興隆D2腹仇者運動團」。另組織「興隆菜市仔農耕隊」交流屋頂耕種經驗、響應田園城市；並衍伸青創品牌「人家紅茶」，以食為題記錄自耕自炊自創商品、醞釀興隆家「味」。",
+    "activity": "生活體驗",
+    "image": "/innovators/XL06/XL06.jpg"
+  },
+  {
+    "id": "XL07",
+    "project_name": "社區生活美學夥伴",
+    "name": "鄭雁菱",
+    "nickname": "YEN YEN",
+    "description": "舉辦親子相關活動，例如手作與二手市集。",
+    "activity": "手作、親子市集",
+    "image": "/innovators/XL07/XL07.jpg"
+  },
+  {
+    "id": "XL09",
+    "project_name": "都市裡的野教育學",
+    "name": "張朝翔、王鈺明",
+    "nickname": "朝翔、鈺明",
+    "description": "我們的計畫透過舉辦走讀踏查、自然觀察、郊山健行、桌遊等，帶大家認識興隆D2周遭豐富的自然生態；另外我們也會吹奏樂器，透過音樂跟大家分享故事。",
+    "activity": "生態走讀、戶外健行、講座、音樂表演",
+    "image": "/innovators/XL09/XL09.jpg"
+  },
+  {
+    "id": "XL10",
+    "project_name": "社區酵母菌培養計畫",
+    "name": "鄭雯敏",
+    "nickname": "雯敏",
+    "description": "酵母菌計畫希望用手作客、音樂灶咖、募資募知網站陪伴大家，讓興隆社宅不只是住所，更是溫暖的生活場。一起分享，一起玩，一起讓日子更美好！",
+    "activity": "手作、烹飪與網站文章撰寫",
+    "image": "/innovators/XL10/XL10.png"
+  },
+  {
+    "id": "XL11",
+    "project_name": "愛屋及烏，樂享社區",
+    "name": "羅友廷",
+    "nickname": "友廷老師",
+    "description": "開設烏克麗麗與吉他課程、音樂律動與節奏Bingo遊戲課程、興隆亂打秀打擊樂團、身體打擊樂活動、長者歌唱音樂課，舉辦社區音樂成果發表會。",
+    "activity": "烏克麗麗課、吉他社、興隆亂打秀打擊樂樂團",
+    "image": "/innovators/XL11/XL11.jpg"
+  },
+  {
+    "id": "XL12",
+    "project_name": "玩中學、做中學",
+    "name": "洪娟華、呂宜庭",
+    "nickname": "球球、阿默",
+    "description": "玩樂中也能輕鬆學習！透過STEAM教育結合手作與不插電程式遊戲，結合燈光科技與生活創作，動手互動、發揮創意，點亮每個節慶時光，一起培養科技素養與邏輯思維，讓學習變得更有趣、更貼近生活！",
+    "activity": "手作",
+    "image": "/innovators/XL12/XL12.png"
+  },
+  {
+    "id": "XL13",
+    "project_name": "興隆健康體育課",
+    "name": "王重凱",
+    "nickname": "Kai",
+    "description": "將我過往豐富的運動與專業教學經驗，分享給社宅的大家\n幫助學習專業的健康運動知識，讓大家更熟悉自己身體，能有效率的運動，\n享受動起來的感覺，讓身體獲得更好的能量去面對生活中各種挑戰！\n我們社宅大家庭就是彼此最好的運動夥伴！",
+    "activity": "肌力訓練、健康運動講座",
+    "image": "/innovators/XL13/XL13.jpeg"
+  },
+  {
+    "id": "XL15",
+    "project_name": "日常科學",
+    "name": "傅虹婷",
+    "nickname": "小傅",
+    "description": "舉辦有趣的手作活動，同時融入科學原理介紹，讓我們一起邊做、邊玩、邊學，另外還有講座或線上不定期分享科學新知～",
+    "activity": "手作、講座",
+    "image": "/innovators/XL15/XL15.jpeg"
+  },
+  {
+    "id": "XL17",
+    "project_name": "行動剪髮一起美計畫-1人1戶",
+    "name": "何俞欣",
+    "nickname": "Yaki",
+    "description": "主要是社區義剪，但不定期結合鄰里舉辦剪髮活動",
+    "activity": "剪髮",
+    "image": "/innovators/XL17/XL17.jpg"
+  },
+  {
+    "id": "XL18",
+    "project_name": "木柵有隆、欣欣向隆",
+    "name": "劉思捷",
+    "nickname": "Scott",
+    "description": "透過音樂表演結合餐食，讓參與的大家有全新的五感體驗。同時，邀請大家一同來創作一首屬於興隆D2社宅的主題曲，你會發現音樂、創作並不如想像的這麼困難、遙遠，更重要的是，我們一起用音樂編織出美好的回憶。",
+    "activity": "講座、表演、餐食",
+    "image": "/innovators/XL18/XL18.jpg"
+  },
+  {
+    "id": "XL20",
+    "project_name": "阿嬤的禮物",
+    "name": "李宜霏",
+    "nickname": "宜霏",
+    "description": "目標帶領社區高齡住戶出外活動,  以行動不方便或少外出的長者為主. 我方將提供交通工具和服物人員. 第一次活動將以社宅附近場所為主.",
+    "activity": "老人出遊活動",
+    "image": "/innovators/XL20/XL20.jpg"
+  },
+  {
+    "id": "XL21",
+    "project_name": "鄰水同樂vs掌中光影",
+    "name": "林婉青",
+    "nickname": "Sandy  or 木木姊",
+    "description": "學會游泳技巧、熟悉自救知能、培養急救技能。\n影像與社區結合，用手機紀錄生活，成為自己生活的導演，打造屬於自己的紀錄片。成為「社區記憶庫」作為社區文化資產保存。",
+    "activity": "講座、課程、休閒運動",
+    "image": "/innovators/XL21/XL21.jpg"
+  },
+  {
+    "id": "XL22",
+    "project_name": "大家來興隆用英語聊聊天吧！",
+    "name": "林慧美、趙志僖",
+    "nickname": "Amy and Kevin",
+    "description": "Amy 有個兒子叫Kevin，英文是Kevin 的第二母語，但Amy 一直找不到一個可以輕鬆練習用英語聊天又不用花錢的地方，所以Amy 就把Kevin 推出來，想和大家一起建立一個English corner ，把興隆D2社宅的地下一樓會議室變成我們用英語交朋友的秘密基地，歡迎大家一起來！",
+    "activity": "英語會話",
+    "image": "/innovators/XL22/XL22.jpg"
+  },
+  {
+    "id": "XL23",
+    "project_name": "歡樂籃球",
+    "name": "江秉軒",
+    "nickname": "Coach Benson",
+    "description": "舉辦基礎體能訓練課程(包含基本的體能訓練以及籃球基本動作練習)，對象為幼童之親子互動(地點在12樓的公共空間)，以及青壯年以上(地點為河堤與附近戶外籃球場)，預計一個月固定舉行一場，視情況加開課程；不定期舉辦社區籃球活動與比賽，地點選在附近室外籃球場或是室內球場",
+    "activity": "籃球運動",
+    "image": "/innovators/XL23/XL23.jpeg"
+  },
+  {
+    "id": "XL24",
+    "project_name": "視病猶親－與疾病共存共好計畫",
+    "name": "羅運生",
+    "nickname": "運生",
+    "description": "臺灣社會邁入超高齡社會，疾病、老化與「死亡」是一件我們應該提早準備與討論的事情；從友善櫃台出發，希望提供資源諮詢與心理準備，創造更好的社區氛圍。",
+    "activity": "友善資源櫃台、工作坊、居民行動計畫",
+    "image": "/innovators/XL24/XL24.jpg"
+  },
+  {
+    "id": "XL25",
+    "project_name": "生藝興隆",
+    "name": "傅秀儒",
+    "nickname": "傅傅",
+    "description": "「生藝興隆，享受興生活」資深北漂女子想開Podcast，跟大家聊聊精彩故事、社宅生活，歡迎找我聊天或投稿 joyce90160@gmail.com",
+    "activity": "Podcast",
+    "image": "/innovators/XL25/XL25.jpg"
+  },
+  {
+    "id": "XL26",
+    "project_name": "DIY創意手作,親子手作",
+    "name": "陳玫錡",
+    "nickname": "玫錡",
+    "description": "希望藉由不同類型的手作活動，來增加鄰里之間的樂趣，如果有想做的手作歡迎一起討論～",
+    "activity": "手作",
+    "image": "/innovators/XL26/XL26.png"
+  },
+  {
+    "id": "XL28",
+    "project_name": "證明我們曾經來過-興隆D2影像紀錄",
+    "name": "黃俊綸",
+    "nickname": "Neal",
+    "description": "⼈之於社區，就猶如光之於影像；我們在這裡⽤時間證明興隆D2的存在，接下來希望可以⽤⼿上的相機，透過眼睛，證明我們曾經來過。",
+    "activity": "講座、展覽",
+    "image": "/innovators/XL28/XL28.jpg"
+  },
+  {
+    "id": "XL29",
+    "project_name": "全民舞蹈「手勢舞」",
+    "name": "嚴衣筠/張向安",
+    "nickname": "小筠/小安",
+    "description": "手勢舞（趣味）+健康操+廣場舞   每次上課再分享一個養生的小知識",
+    "activity": "運動",
+    "image": "/innovators/XL29/XL29.jpg"
+  },
+  {
+    "id": "XL29",
+    "project_name": "全民舞蹈「手勢舞」",
+    "name": "yu",
+    "nickname": "玉",
+    "description": "將結合手勢舞（趣味）+健康操+廣場舞，可訓練腦力及體力，並創造鄰里互動及定期運動的機會，另外在每堂課分享養生的小知識。",
+    "activity": "趣味",
+    "image": "/innovators/XL29/XL29.jpg"
+  },
+  {
+    "id": "XL30",
+    "project_name": "興隆居民人物誌，創造屬於社區的畢業紀念冊",
+    "name": "羅士欽",
+    "nickname": "47",
+    "description": "透過AI圖片生成，教導大家親手打造自己的AI分身，並將其製作成獨特的拍立得風格明信片，留下珍貴的數位紀念。",
+    "activity": "AI圖片生成教學",
+    "image": "/innovators/XL30/XL30.png"
+  }
+]
