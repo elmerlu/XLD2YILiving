@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { ExternalLink, RefreshCw, AlertCircle } from 'lucide-react'
 import styles from './Stories.module.css'
 // 已同步過的文章紀錄（寫死在專案裡），由 `npm run sync:medium` 產生與比對
@@ -24,17 +23,12 @@ const MoreButton = ({ label }) => (
 )
 
 const Stories = () => {
-    const [searchParams] = useSearchParams()
-    const isForcedError = searchParams.get('error') === '1' || searchParams.get('preview') === 'error'
-
     // 一律預設載入自己備份同步的資料，保證隨時有內容可讀
     const [articles, setArticles] = useState(staticArticles)
-    const [loading, setLoading] = useState(isForcedError ? false : staticArticles.length === 0)
-    const [error, setError] = useState(isForcedError)
+    const [loading, setLoading] = useState(staticArticles.length === 0)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
-        if (isForcedError) return
-
         // 背景依序嘗試各來源；若全部失敗，標記 error 顯示通知，畫面仍保留備份資料
         fetchMediumArticles({
             timeoutMs: 10000,
@@ -49,7 +43,7 @@ const Stories = () => {
                 setError(true)
             })
             .finally(() => setLoading(false))
-    }, [isForcedError])
+    }, [])
 
     return (
         <div className="container">
