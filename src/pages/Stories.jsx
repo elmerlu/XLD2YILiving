@@ -62,7 +62,7 @@ const Stories = () => {
                     </p>
                 </header>
 
-                <MoreButton label="前往 Medium 閱讀更多故事" />
+                {!error && <MoreButton label="前往 Medium 閱讀更多故事" />}
 
                 {/* 當同步失敗時，上方顯示引導專欄頻道的提示區塊 */}
                 {error && (
@@ -80,7 +80,7 @@ const Stories = () => {
                             rel="noopener noreferrer"
                             className={styles.noticeLink}
                         >
-                            前往 Medium 頻道觀看最新文章 <ExternalLink size={16} />
+                            前往 Medium 閱讀更多故事 <ExternalLink size={16} />
                         </a>
                     </div>
                 )}
