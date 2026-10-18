@@ -226,11 +226,16 @@ const Funding = () => {
                         不管你是新住戶、老鄰居，還是對社宅好奇的朋友，都歡迎你：
                     </p>
                     <div className={styles.ctaGrid}>
-                        <div className={styles.ctaCard}>
+                        <a
+                            href="https://www.facebook.com/xinglongph2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.ctaCard} ${styles.ctaCardLink}`}
+                        >
                             <span className={styles.ctaIcon}>📱</span>
                             <p className={styles.ctaTitle}>追蹤粉專</p>
                             <p className={styles.ctaDesc}>掌握最新活動資訊</p>
-                        </div>
+                        </a>
                         <div className={styles.ctaCard}>
                             <span className={styles.ctaIcon}>💬</span>
                             <p className={styles.ctaTitle}>加入群組</p>
@@ -261,7 +266,16 @@ const Funding = () => {
                             >
                                 投稿
                             </a>
-                            {' '}，或直接到粉絲專頁留言。
+                            {' '}，或直接到{' '}
+                            <a
+                                href="https://www.facebook.com/xinglongph2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: 'var(--color-primary)', textDecoration: 'underline', fontWeight: '600' }}
+                            >
+                                粉絲專頁
+                            </a>
+                            {' '}留言。
                         </p>
                     </div>
                 </Card>

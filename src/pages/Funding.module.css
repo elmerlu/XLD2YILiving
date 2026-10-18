@@ -291,6 +291,13 @@
     border-color: var(--color-primary);
 }
 
+.ctaCardLink {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+}
+
 .ctaIcon {
     font-size: 2.5rem;
     display: block;
