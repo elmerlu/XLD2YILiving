@@ -77,9 +77,13 @@ const InnovatorGrid = () => {
                             {/* Content Section - Reordered for Polaroid Style */}
                             <div className={styles.content}>
                                 <div className={styles.headerInfo}>
-                                    <span className={styles.idLabel}>{innovator.id}</span>
-                                    <span className={styles.name}>{innovator.project_name}</span>
-                                    {innovator.nickname && <span className={styles.nickname}> ({innovator.nickname})</span>}
+                                    <div className={styles.name} style={{ display: 'block', marginBottom: '4px', fontSize: '1.1rem' }}>
+                                        {innovator.project_name}
+                                    </div>
+                                    <div style={{ color: '#666', fontSize: '0.9rem' }}>
+                                        <span className={styles.idLabel}>{innovator.id}</span>
+                                        {innovator.nickname && <span className={styles.nickname}> {innovator.nickname}</span>}
+                                    </div>
                                 </div>
 
                                 <p className={styles.description}>{innovator.description}</p>

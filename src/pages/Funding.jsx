@@ -251,7 +251,17 @@ const Funding = () => {
                     <div className={styles.finalMessage}>
                         <p style={{ marginBottom: '1rem' }}>記住，興隆社宅不只是一個地址，更是一個充滿可能的家。<br />讓我們一起努力，讓這裡成為台北最有溫度的社區！</p>
                         <p style={{ fontSize: '1rem', fontWeight: 'normal', color: 'var(--color-text-main)', marginTop: '2rem' }}>
-                            如果你有任何問題或建議，歡迎點擊右下角聯絡我們，或直接到粉絲專頁留言。
+                            {/* 「投稿」與頁尾連結同一份 Google 表單，加螢光筆醒目效果 */}
+                            如果你有任何問題或建議，歡迎{' '}
+                            <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.submitHighlight}
+                            >
+                                投稿
+                            </a>
+                            {' '}，或直接到粉絲專頁留言。
                         </p>
                     </div>
                 </Card>

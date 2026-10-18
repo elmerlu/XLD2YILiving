@@ -53,6 +53,25 @@
     npm run dev
     ```
 
+## Medium 文章同步 (Stories 頁)
+
+文章顯示採「紀錄 + 即時同步」雙層機制：
+
+1. **紀錄**：`src/data/mediumArticles.json`，頁面一打開就顯示（離線、阻擋皆不受影響）。
+2. **即時同步**：前端背景自動向 `rss2json`（備援為 `allorigins`）探測，成功即動態補上最新文章；若遇外圍服務阻擋則優雅降級顯示本地文章與專屬引導連結。
+
+```bash
+npm run sync:medium              # 同步並更新紀錄（Medium 發新文後執行）
+npm run sync:medium -- --check   # 只比對紀錄與 Medium 差異，不寫檔（定期檢視用）
+npm run sync:medium -- --health  # 測試各同步來源在 Node 環境下的可用性
+```
+
+> **內部檢測頁**：可透過 `/sync-status` 路由查看即時各來源在線燈號與文章比對狀態。
+
+### 未來優化規劃 (TODO)
+- [ ] **GitHub Actions 自動化定時同步**：建立 GitHub Actions 排程（Cron Job），每天定時在無 CORS 限制的環境執行 `npm run sync:medium` 並自動 commit / deploy。
+- [ ] **Cloudflare Workers 專屬 RSS 代理**：自建輕量無伺服器 Worker，統一加上 CORS 標頭與邊緣快取，擺脫第三方公共 Proxy 的限制。
+
 ## 部署 (Deployment)
 
 本專案配置為部署至 GitHub Pages：

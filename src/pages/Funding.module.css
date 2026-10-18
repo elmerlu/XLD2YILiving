@@ -319,6 +319,25 @@
     background: radial-gradient(circle, rgba(255, 126, 103, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
+/* 「我要投稿」醒目效果：主色粗體 + 螢光筆底線，hover 時底色往上填滿 */
+.submitHighlight {
+    margin: 0 0.05em;
+    padding: 0 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    background: linear-gradient(transparent 60%, rgba(255, 126, 103, 0.28) 60%);
+    border-radius: 3px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.submitHighlight:hover,
+.submitHighlight:focus-visible {
+    color: var(--color-primary-hover);
+    background: linear-gradient(transparent 0%, rgba(255, 126, 103, 0.22) 0%);
+}
+
 @media (min-width: 768px) {
     .lifestyleGrid {
         grid-template-columns: 1fr 1fr;

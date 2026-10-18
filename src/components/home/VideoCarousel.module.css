@@ -23,16 +23,14 @@
     overflow: hidden;
     box-shadow: var(--shadow-md);
     position: relative;
-    /* Determine swipe area via JS or specific container */
-    touch-action: pan-y;
-    /* Allow vertical scroll but handle horizontal in JS */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .carouselTrack {
     display: flex;
     width: 100%;
     height: 100%;
-    /* Transition handled inline in JS for drag vs snap */
 }
 
 .slide {
@@ -42,22 +40,23 @@
     position: relative;
 }
 
-/* Invisible overlay to capture mouse events for dragging functionality */
-.iframeOverlay {
+/* 捕捉手勢與點擊的透明層 */
+.slideOverlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    /* Leave bottom 15% for controls */
+    inset: 0;
     z-index: 10;
-    pointer-events: auto;
-    /* Enable dragging on top part */
     cursor: grab;
+    touch-action: pan-y;
 }
 
-.iframeOverlay:active {
+.slideOverlay:active {
     cursor: grabbing;
+}
+
+/* 當影片正在播放時讓位，將控制權交給 YouTube 原生播放器 */
+.hiddenOverlay {
+    pointer-events: none;
+    display: none;
 }
 
 .iframe {
@@ -83,7 +82,6 @@
     box-shadow: var(--shadow-sm);
     opacity: 1;
     z-index: 20;
-    /* Ensure buttons above everything */
 }
 
 .navBtn:hover {
@@ -121,7 +119,6 @@
 .infoSection {
     padding: 0 0.5rem;
     text-align: center;
-    /* Centered as per new layout feel */
 }
 
 .title {

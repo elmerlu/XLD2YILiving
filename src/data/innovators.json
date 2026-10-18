@@ -60,13 +60,13 @@
     "nickname": "YEN YEN",
     "description": "舉辦親子相關活動，例如手作與二手市集。",
     "activity": "手作、親子市集",
-    "image": "/innovators/XL07/XL07.jpg"
+    "image": ""
   },
   {
     "id": "XL08",
     "project_name": "音樂城市計畫",
     "name": "連明箴",
-    "nickname": "",
+    "nickname": "阿明",
     "description": "透過各式各樣的音樂活動，在社區裡面有更多元的音樂氛圍！",
     "activity": "",
     "image": ""
@@ -120,7 +120,7 @@
     "id": "XL14",
     "project_name": "良食煮意 樂齡共好",
     "name": "彭俞諺",
-    "nickname": "",
+    "nickname": "彭俞諺",
     "description": "頂樓田園農場收成製作分享精緻料理，跟音樂結合，享受餐點的時光。",
     "activity": "",
     "image": ""
@@ -135,13 +135,22 @@
     "image": "/innovators/XL15/XL15.jpeg"
   },
   {
+    "id": "XL16",
+    "project_name": "組別內容整理中",
+    "name": "（待補充）",
+    "nickname": "",
+    "description": "計畫內容後續補充。",
+    "activity": "",
+    "image": "/innovators/XL16/XL16.jpg"
+  },
+  {
     "id": "XL17",
     "project_name": "行動剪髮一起美計畫-1人1戶",
     "name": "何俞欣",
     "nickname": "Yaki",
     "description": "主要是社區義剪，但不定期結合鄰里舉辦剪髮活動",
     "activity": "剪髮",
-    "image": "/innovators/XL17/XL17.jpg"
+    "image": "/innovators/XL17/XL17.png"
   },
   {
     "id": "XL18",
@@ -156,7 +165,7 @@
     "id": "XL19",
     "project_name": "一起Home焙趣",
     "name": "黃震營",
-    "nickname": "",
+    "nickname": "黃震營",
     "description": "主辦烘焙手作活動，與社福機構合辦烘焙課程；拍攝影片紀錄青創活動。",
     "activity": "",
     "image": ""
@@ -174,7 +183,7 @@
     "id": "XL21",
     "project_name": "鄰水同樂vs掌中光影",
     "name": "林婉青",
-    "nickname": "Sandy  or 木木姊",
+    "nickname": "Sandy",
     "description": "學會游泳技巧、熟悉自救知能、培養急救技能。\n影像與社區結合，用手機紀錄生活，成為自己生活的導演，打造屬於自己的紀錄片。成為「社區記憶庫」作為社區文化資產保存。",
     "activity": "講座、課程、休閒運動",
     "image": "/innovators/XL21/XL21.jpg"
@@ -183,19 +192,10 @@
     "id": "XL22",
     "project_name": "大家來興隆用英語聊聊天吧！",
     "name": "林慧美、趙志僖",
-    "nickname": "Amy and Kevin",
+    "nickname": "Amy、Kevin",
     "description": "Amy 有個兒子叫Kevin，英文是Kevin 的第二母語，但Amy 一直找不到一個可以輕鬆練習用英語聊天又不用花錢的地方，所以Amy 就把Kevin 推出來，想和大家一起建立一個English corner ，把興隆D2社宅的地下一樓會議室變成我們用英語交朋友的秘密基地，歡迎大家一起來！",
     "activity": "英語會話",
     "image": "/innovators/XL22/XL22.jpg"
-  },
-  {
-    "id": "XL23",
-    "project_name": "歡樂籃球",
-    "name": "江秉軒",
-    "nickname": "Coach Benson",
-    "description": "舉辦基礎體能訓練課程(包含基本的體能訓練以及籃球基本動作練習)，對象為幼童之親子互動(地點在12樓的公共空間)，以及青壯年以上(地點為河堤與附近戶外籃球場)，預計一個月固定舉行一場，視情況加開課程；不定期舉辦社區籃球活動與比賽，地點選在附近室外籃球場或是室內球場",
-    "activity": "籃球運動",
-    "image": "/innovators/XL23/XL23.jpeg"
   },
   {
     "id": "XL24",
@@ -228,7 +228,7 @@
     "id": "XL27",
     "project_name": "HOW Fun！興隆未來學苑",
     "name": "黃安緁",
-    "nickname": "",
+    "nickname": "黃安緁",
     "description": "以社群行銷為核心，讓內容會說話，為協助在地青年與多元世代善用數位工具，連結興隆社宅與社群，共創品牌影響力，打造共感、共學、共創的行銷未來。",
     "activity": "",
     "image": ""
@@ -247,17 +247,8 @@
     "project_name": "全民舞蹈「手勢舞」",
     "name": "嚴衣筠/張向安",
     "nickname": "小筠/小安",
-    "description": "手勢舞（趣味）+健康操+廣場舞   每次上課再分享一個養生的小知識",
-    "activity": "運動",
-    "image": "/innovators/XL29/XL29.jpg"
-  },
-  {
-    "id": "XL29",
-    "project_name": "全民舞蹈「手勢舞」",
-    "name": "yu",
-    "nickname": "玉",
     "description": "將結合手勢舞（趣味）+健康操+廣場舞，可訓練腦力及體力，並創造鄰里互動及定期運動的機會，另外在每堂課分享養生的小知識。",
-    "activity": "趣味",
+    "activity": "運動",
     "image": "/innovators/XL29/XL29.jpg"
   },
   {
