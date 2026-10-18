@@ -27,24 +27,26 @@ const Stories = () => {
     const [searchParams] = useSearchParams()
     const isForcedError = searchParams.get('error') === '1' || searchParams.get('preview') === 'error'
 
-    // 一開始就顯示紀錄裡的文章，不用等 API（若帶有 ?error=1 則強制模擬失敗畫面）
-    const [articles, setArticles] = useState(isForcedError ? [] : staticArticles)
+    // 一律預設載入自己備份同步的資料，保證隨時有內容可讀
+    const [articles, setArticles] = useState(staticArticles)
     const [loading, setLoading] = useState(isForcedError ? false : staticArticles.length === 0)
     const [error, setError] = useState(isForcedError)
 
     useEffect(() => {
         if (isForcedError) return
 
-        // 背景依序嘗試各來源；全部失敗也沒關係，畫面保留紀錄內容（只差最新文章無法即時顯示）
+        // 背景依序嘗試各來源；若全部失敗，標記 error 顯示通知，畫面仍保留備份資料
         fetchMediumArticles({
             timeoutMs: 10000,
             onLog: (name, ok, detail) => console.info(`[Medium 同步] ${ok ? '✅' : '❌'} ${name}：${detail}`),
         })
-            .then(({ articles: live }) => setArticles((prev) => mergeArticles(prev, live)))
+            .then(({ articles: live }) => {
+                setArticles((prev) => mergeArticles(prev, live))
+                setError(false)
+            })
             .catch((err) => {
-                console.warn('[Medium 同步] 全部來源失敗，改用已儲存紀錄：', err.message)
-                // 只有連紀錄都沒有時，才顯示錯誤畫面
-                if (staticArticles.length === 0) setError(true)
+                console.warn('[Medium 同步] 全部即時來源失敗，改用已儲存紀錄：', err.message)
+                setError(true)
             })
             .finally(() => setLoading(false))
     }, [isForcedError])
@@ -62,32 +64,35 @@ const Stories = () => {
 
                 <MoreButton label="前往 Medium 閱讀更多故事" />
 
-                {loading ? (
-                    <div className={styles.loading}>
-                        <RefreshCw className="animate-spin" size={40} style={{ color: 'var(--color-primary)', marginBottom: '1rem' }} />
-                        <p>正在從 Medium 同步最新文章...</p>
-                    </div>
-                ) : error ? (
-                    <div className={styles.error}>
-                        <AlertCircle size={48} className={styles.errorTitle} />
-                        <h3 className={styles.errorTitle}>文章同步暫時受阻</h3>
-                        <p>由於外圍連線或 API 限制，暫時無法即時取得最新文章列表。</p>
-                        <p style={{ marginTop: '0.5rem', color: 'var(--color-text-main)', fontWeight: '500' }}>
+                {/* 當同步失敗時，上方顯示引導專欄頻道的提示區塊 */}
+                {error && (
+                    <div className={styles.syncNoticeCard}>
+                        <div className={styles.noticeHeader}>
+                            <AlertCircle size={28} className={styles.noticeIcon} />
+                            <h3 className={styles.noticeTitle}>最新文章同步失敗</h3>
+                        </div>
+                        <p className={styles.noticeText}>
                             想閱讀最新發表的故事與即時紀實，歡迎直接前往我們的專欄頻道：
                         </p>
                         <a
                             href={MEDIUM_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.externalLink}
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: '1rem' }}
+                            className={styles.noticeLink}
                         >
                             前往 Medium 頻道觀看最新文章 <ExternalLink size={16} />
                         </a>
                     </div>
+                )}
+
+                {loading ? (
+                    <div className={styles.loading}>
+                        <RefreshCw className="animate-spin" size={40} style={{ color: 'var(--color-primary)', marginBottom: '1rem' }} />
+                        <p>正在從 Medium 同步最新文章...</p>
+                    </div>
                 ) : articles.length === 0 ? (
-                    <div className={styles.error}>
-                        <h3 className={styles.errorTitle}>目前尚無文章</h3>
+                    <div className={styles.emptyState}>
+                        <h3 className={styles.emptyTitle}>目前尚無文章</h3>
                         <p>Medium 頻道上還沒有發布任何文章，歡迎稍後再過來看看！</p>
                         <a
                             href={MEDIUM_URL}
@@ -99,6 +104,7 @@ const Stories = () => {
                         </a>
                     </div>
                 ) : (
+                    /* 下方區塊接上備份同步的資料 */
                     <div className={styles.feed}>
                         {articles.slice(0, 10).map((article) => (
                             <a
@@ -115,7 +121,6 @@ const Stories = () => {
                                 />
                                 <div className={styles.cardContent}>
                                     <h2 className={styles.cardTitle}>{article.title}</h2>
-                                    {/* 摘要已是純文字，不再需要 dangerouslySetInnerHTML */}
                                     <div className={styles.excerpt}>{article.excerpt}</div>
                                     <div className={styles.cardFooter}>
                                         <span>閱讀更多 ➔</span>
@@ -127,7 +132,7 @@ const Stories = () => {
                     </div>
                 )}
 
-                {!loading && !error && articles.length > 0 && (
+                {!loading && articles.length > 0 && (
                     <MoreButton label="深度探索更多社區故事" />
                 )}
             </div>

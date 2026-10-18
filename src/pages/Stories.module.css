@@ -46,6 +46,79 @@
     box-shadow: var(--shadow-md);
 }
 
+/* 同步失敗時的優雅提示區塊 */
+.syncNoticeCard {
+    background: #FFF7ED;
+    border: 1.5px solid #FDBA74;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(234, 88, 12, 0.08);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.noticeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.noticeIcon {
+    color: #EA580C;
+    flex-shrink: 0;
+}
+
+.noticeTitle {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #9A3412;
+    margin: 0;
+}
+
+.noticeText {
+    font-size: 1.05rem;
+    color: #7C2D12;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.noticeLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.4rem;
+    background-color: #EA580C;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+}
+
+.noticeLink:hover {
+    background-color: #C2410C;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+    color: #ffffff;
+}
+
 .feed {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -113,9 +186,9 @@
     align-items: center;
 }
 
-/* Loading & Error States */
+/* Loading & Empty States */
 .loading,
-.error {
+.emptyState {
     text-align: center;
     padding: 4rem;
     background: white;
@@ -123,8 +196,8 @@
     box-shadow: var(--shadow-sm);
 }
 
-.errorTitle {
-    color: #E53E3E;
+.emptyTitle {
+    color: var(--color-text-main);
     margin-bottom: 1rem;
 }
 
