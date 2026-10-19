@@ -56,15 +56,18 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     height: 100%;
     /* Fill grid cell height */
     min-height: 480px;
     /* Consistent height */
+    cursor: pointer;
+    user-select: none;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 7px 9px 0px rgba(0, 0, 0, 0.12);
 }
 
 /* Tape Effect Base */
@@ -183,7 +186,8 @@
     text-align-last: center;
     display: -webkit-box;
     -webkit-line-clamp: 5;
-    /* Limit lines */
+    line-clamp: 5;
+    /* Limit lines to 5 */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -210,3 +214,195 @@
     justify-content: center;
     background-color: #FFF5F5;
 }
+
+/* Modal Popup Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    padding: 2rem 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #F1F5F9;
+    color: #475569;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+    z-index: 10;
+}
+
+.modalCloseButton:hover {
+    background-color: #E2E8F0;
+    color: #0F172A;
+    transform: scale(1.08);
+}
+
+.modalHeader {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    padding-top: 0.25rem;
+}
+
+.modalIdBadge {
+    display: inline-block;
+    background-color: #FEF3C7;
+    color: #D97706;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.modalTitle {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-primary, #2D3748);
+    margin: 0.25rem 0 0.4rem;
+    line-height: 1.35;
+}
+
+.modalNickname {
+    font-size: 1rem;
+    color: #64748B;
+    margin: 0;
+}
+
+.modalImageContainer {
+    width: 100%;
+    max-height: 300px;
+    background-color: #F8F9FA;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.modalImage {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    background-color: #F8F9FA;
+}
+
+.modalDescription {
+    font-size: 1.02rem;
+    color: #334155;
+    line-height: 1.85;
+    white-space: pre-line;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    padding: 0 0.25rem;
+}
+
+.modalTagsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #E2E8F0;
+    margin-top: auto;
+}
+
+.modalTagLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748B;
+}
+
+.modalTag {
+    display: inline-block;
+    background-color: #FFF7ED;
+    color: #EA580C;
+    border: 1px solid #FFEDD5;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+}
+
+.modalFooter {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.modalDismissBtn {
+    padding: 0.5rem 1.75rem;
+    background-color: #F8FAFC;
+    color: #475569;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modalDismissBtn:hover {
+    background-color: #F1F5F9;
+    color: #0F172A;
+    border-color: #94A3B8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

@@ -241,16 +241,26 @@ const Funding = () => {
                             <p className={styles.ctaTitle}>加入群組</p>
                             <p className={styles.ctaDesc}>認識更多鄰居朋友</p>
                         </div>
-                        <div className={styles.ctaCard}>
+                        <a
+                            href="https://xinlong-d2.web.app/register-events"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.ctaCard} ${styles.ctaCardLink}`}
+                        >
                             <span className={styles.ctaIcon}>🙋</span>
                             <p className={styles.ctaTitle}>參加活動</p>
                             <p className={styles.ctaDesc}>創造美好社區回憶</p>
-                        </div>
-                        <div className={styles.ctaCard}>
+                        </a>
+                        <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSc5bCtiYOH_fUo1wFjGcPfaEFR_1dMRoqkpXC4Gpa4uHVJI8Q/viewform?usp=send_form"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.ctaCard} ${styles.ctaCardLink}`}
+                        >
                             <span className={styles.ctaIcon}>✏️</span>
                             <p className={styles.ctaTitle}>分享經驗</p>
                             <p className={styles.ctaDesc}>讓網站內容更豐富</p>
-                        </div>
+                        </a>
                     </div>
 
                     <div className={styles.finalMessage}>
