@@ -1,0 +1,787 @@
+/* Modal Backdrop */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.22s ease forwards;
+}
+
+/* Modal Main Box - Warm Paper Texture & Layered Background Elements */
+.modalContainer {
+    background-color: #faf6ee;
+    background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1.25px, transparent 1.25px);
+    background-size: 22px 22px;
+    width: 100%;
+    max-width: 1160px;
+    max-height: 90vh;
+    border-radius: 24px;
+    box-shadow:
+        0 25px 50px -12px rgba(15, 23, 42, 0.38),
+        0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    animation: modalPop 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 全域環境背景裝飾層（呼應海報的色塊、小山丘與社宅樹木） */
+.ambientBackdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.blobTopLeft {
+    position: absolute;
+    top: -60px;
+    left: -50px;
+    width: 340px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(253, 224, 71, 0.32) 0%, rgba(254, 243, 199, 0) 72%);
+    border-radius: 50%;
+}
+
+.blobMidRight {
+    position: absolute;
+    top: 28%;
+    right: -80px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(153, 246, 228, 0.35) 0%, rgba(204, 251, 241, 0) 70%);
+    border-radius: 50%;
+}
+
+.blobBottomLeft {
+    position: absolute;
+    bottom: -70px;
+    left: 12%;
+    width: 420px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(187, 247, 208, 0.35) 0%, rgba(220, 252, 231, 0) 72%);
+    border-radius: 50%;
+}
+
+.cornerForestLeft {
+    position: absolute;
+    bottom: -6px;
+    left: -10px;
+    width: 240px;
+    height: auto;
+}
+
+.cornerForestRight {
+    position: absolute;
+    bottom: -6px;
+    right: -10px;
+    width: 220px;
+    height: auto;
+}
+
+.cornerNeighborsRight {
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    width: 260px;
+    height: auto;
+}
+
+/* Header - Compact Single-Tier on Desktop with Festive Bunting Flags */
+.modalHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.35rem 2.25rem 1.05rem;
+    background: linear-gradient(135deg, rgba(255, 251, 235, 0.92) 0%, rgba(255, 255, 255, 0.92) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.buntingCenter {
+    position: absolute;
+    top: -3px;
+    left: 54%;
+    transform: translateX(-50%);
+    width: 245px;
+    height: auto;
+    opacity: 0.88;
+    pointer-events: none;
+}
+
+.headerTopRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.headerTitleArea {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.headerEmoji {
+    font-size: 1.55rem;
+    line-height: 1;
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: 1.48rem;
+    font-weight: 800;
+    color: var(--color-secondary, #1e293b);
+    letter-spacing: 0.02em;
+}
+
+.modalSubtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.posterLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.posterLink:hover {
+    background: #fff7ed;
+    color: #ea580c;
+    border-color: #fdba74;
+}
+
+.closeBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+    transform: rotate(90deg);
+}
+
+/* Filter Tabs */
+.filterTabs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding-left: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tabBtn {
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.48rem 1.15rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tabBtn:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.tabActive {
+    background: var(--color-primary, #ff7e67);
+    border-color: var(--color-primary, #ff7e67);
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(255, 126, 103, 0.28);
+}
+
+.tabActive:hover {
+    background: var(--color-primary, #ff7e67);
+    color: #ffffff;
+}
+
+.tabActiveFb {
+    background: #1877F2;
+    border-color: #1877F2;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(24, 119, 242, 0.28);
+}
+
+.tabActiveFb:hover {
+    background: #1877F2;
+    color: #ffffff;
+}
+
+.tabActiveLine {
+    background: #06C755;
+    border-color: #06C755;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(6, 199, 85, 0.28);
+}
+
+.tabActiveLine:hover {
+    background: #06C755;
+    color: #ffffff;
+}
+
+/* Scrollable Modal Body - Generous Breathing Room over Ambient Backdrop */
+.modalBody {
+    padding: 1.5rem 2.25rem 2.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.modalBody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.6);
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Platform Section */
+.platformSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0.45rem 0.9rem;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.sectionDot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dotFb {
+    background: #1877F2;
+    box-shadow: 0 0 0 4px rgba(24, 119, 242, 0.16);
+}
+
+.dotLine {
+    background: #06C755;
+    box-shadow: 0 0 0 4px rgba(6, 199, 85, 0.16);
+}
+
+.sectionHeading {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.sectionHint {
+    font-size: 0.84rem;
+    color: #64748b;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+/* Cards Grid - Flex Wrap + Center so 1, 2, or 3 cards in a row are ALWAYS horizontally centered */
+.cardsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.75rem;
+}
+
+/* Individual Group Card - Vertical Spacious Poster Card */
+.groupCard {
+    flex: 0 1 calc((100% - 3.5rem) / 3);
+    max-width: 342px;
+    min-width: 290px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 1.35rem 1.4rem 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+    box-shadow: 0 6px 20px -4px rgba(15, 23, 42, 0.06);
+    position: relative;
+}
+
+.cardFacebook {
+    --brand-color: #1877F2;
+    --brand-bg: #eff6ff;
+    --brand-soft-bg: rgba(239, 246, 255, 0.72);
+    --brand-border: #bfdbfe;
+}
+
+.cardLine {
+    --brand-color: #06C755;
+    --brand-bg: #ecfdf5;
+    --brand-soft-bg: rgba(236, 253, 245, 0.72);
+    --brand-border: #bbf7d0;
+}
+
+.groupCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px -6px rgba(15, 23, 42, 0.13);
+    border-color: var(--brand-color);
+    background: #ffffff;
+}
+
+/* 卡片內部右下角手繪風主題背景浮水印 */
+.cardBgDecor {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cardBgSvg {
+    position: absolute;
+    right: -12px;
+    bottom: 34px;
+    width: 118px;
+    height: 118px;
+    color: var(--brand-color);
+    opacity: 0.07;
+    transform: rotate(-8deg);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.groupCard:hover .cardBgSvg {
+    opacity: 0.13;
+    transform: rotate(0deg) scale(1.08);
+}
+
+/* 卡片頂部：置中群組名稱 */
+.cardTitleHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 54px;
+    margin-bottom: 0.85rem;
+    padding: 0 0.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.groupName {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.38;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+}
+
+.groupCard:hover .groupName {
+    color: var(--brand-color);
+}
+
+/* Center Spacious QR Code Showcase Box */
+.qrShowcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--brand-soft-bg);
+    border: 1px dashed var(--brand-border);
+    border-radius: 16px;
+    padding: 0.9rem 0.85rem 1.05rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    transition: background-color 0.25s ease;
+}
+
+.qrFrame {
+    width: 138px;
+    height: 138px;
+    padding: 7px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.groupCard:hover .qrFrame {
+    transform: scale(1.04);
+}
+
+.qrSvgWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrSvgWrapper svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.qrImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* 互動式管理員 / 群主招呼膠囊與對話氣泡 */
+.hostInteractiveWrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* 懸停或點擊時浮現的活潑對話氣泡 */
+.hostBubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px) scale(0.94);
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.45;
+    padding: 0.45rem 0.75rem;
+    border-radius: 12px;
+    width: max-content;
+    max-width: 245px;
+    text-align: center;
+    box-shadow: 0 10px 22px -4px rgba(15, 23, 42, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 15;
+}
+
+.hostBubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+.hostInteractiveWrap:hover .hostBubble,
+.hostBubbleActive {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.hostBubbleActive {
+    background: #ea580c;
+}
+
+.hostBubbleActive::after {
+    border-color: #ea580c transparent transparent transparent;
+}
+
+.bubbleText {
+    display: block;
+}
+
+/* 群主互動膠囊名牌（位於 QR Code 上方） */
+.hostPill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 9999px;
+    padding: 0.28rem 0.65rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 100%;
+    font-family: inherit;
+}
+
+.hostPill:hover {
+    border-color: var(--brand-color);
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.1);
+}
+
+.hostRoleTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.hostNames {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 175px;
+}
+
+.waveHand {
+    font-size: 0.78rem;
+    display: inline-block;
+    transform-origin: 50% 80%;
+    opacity: 0.85;
+}
+
+.groupCard:hover .waveHand,
+.hostPill:hover .waveHand {
+    animation: waveHandAnim 1.1s ease-in-out infinite;
+    opacity: 1;
+}
+
+@keyframes waveHandAnim {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(22deg) scale(1.1); }
+    50% { transform: rotate(-12deg) scale(1.1); }
+    75% { transform: rotate(18deg) scale(1.05); }
+}
+
+/* Full-width Info Section */
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+    margin-bottom: 1.15rem;
+    padding: 0 0.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.groupTagline {
+    margin: 0 0 0.45rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    line-height: 1.45;
+}
+
+.groupDesc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.62;
+}
+
+/* Bottom Full-width CTA Button */
+.cardFooter {
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.joinAction {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    background: var(--brand-bg);
+    padding: 0.65rem 1rem;
+    border-radius: 12px;
+    transition: all 0.22s ease;
+    box-sizing: border-box;
+}
+
+.groupCard:hover .joinAction {
+    background: var(--brand-color);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1040px) {
+    .groupCard {
+        flex: 0 1 calc((100% - 1.75rem) / 2);
+        max-width: 350px;
+        min-width: 275px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modalOverlay {
+        padding: 0.75rem;
+    }
+
+    .modalContainer {
+        max-height: 92vh;
+        border-radius: 20px;
+    }
+
+    .modalHeader {
+        padding: 1.25rem 1.25rem 1rem;
+        gap: 0.9rem;
+    }
+
+    .buntingCenter {
+        display: none;
+    }
+
+    .cornerNeighborsRight {
+        display: none;
+    }
+
+    .headerTopRow {
+        flex-wrap: wrap;
+    }
+
+    .modalTitle {
+        font-size: 1.3rem;
+    }
+
+    .modalSubtitle {
+        font-size: 0.88rem;
+    }
+
+    .posterLink span {
+        display: none;
+    }
+
+    .posterLink {
+        padding: 0.5rem;
+    }
+
+    .modalBody {
+        padding: 1.35rem 1.25rem 1.75rem;
+        gap: 2.25rem;
+    }
+
+    .cardsGrid {
+        gap: 1.35rem;
+    }
+
+    .groupCard {
+        flex: 0 1 100%;
+        max-width: 380px;
+        min-width: 0;
+    }
+
+    .sectionHint {
+        display: none;
+    }
+}

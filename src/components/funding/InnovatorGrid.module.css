@@ -1,0 +1,561 @@
+/* Inherit basic layout from original but modify card style */
+.sectionTitle {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.sectionTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.gridContainer {
+    display: grid;
+    /* Expanded layout logic: Using negative margins to go wider than parent padding */
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+    /* Responsive columns */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    /* Padding to avoid edge clipping */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .gridContainer {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    /* Polaroid Style: Reduced padding by half as requested */
+    padding: 0.6rem;
+    padding-bottom: 2rem;
+    /* Keep bottom space for text, or reduce slightly? Keeping for now */
+    /* Subtle border outline - Reverted to #DDDDDD based on clarification */
+    border: 1px solid #DDDDDD;
+    /* Box shadow for depth */
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    /* Fill grid cell height */
+    min-height: 480px;
+    /* Consistent height */
+    cursor: pointer;
+    user-select: none;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 7px 9px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* Tape Effect Base */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    width: 25px;
+    height: 60px;
+    opacity: 0.9;
+    transform: rotate(5deg);
+    z-index: 10;
+    /* Rough edges for tape look */
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%, 5% 90%, 0% 85%, 3% 80%, 0% 75%, 4% 70%, 1% 65%, 3% 60%, 0% 55%, 3% 50%, 1% 45%, 4% 40%, 1% 35%, 3% 30%, 0% 25%, 3% 20%, 1% 15%, 4% 10%, 0% 5%);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Tape Colors */
+.tapeColor1::before {
+    background-color: #F6AD55;
+}
+
+/* Orange */
+.tapeColor2::before {
+    background-color: #4FD1C5;
+}
+
+/* Teal */
+.tapeColor3::before {
+    background-color: #FC8181;
+}
+
+/* Red/Pink */
+.tapeColor4::before {
+    background-color: #68D391;
+}
+
+/* Green */
+
+.imageContainer {
+    width: 100%;
+    /* 4:3 Aspect ratio */
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    /* Adjusted background color */
+    padding: 5px;
+    /* Thicker white frame - Adjusted to 5px */
+    border: 1px solid #C0C0C0;
+    /* Darker edge for photo */
+    /* Inner shadow for photo depth */
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+}
+
+.innovatorImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.1);
+    /* Slight vintage feel */
+    transition: filter 0.3s ease, transform 0.5s ease;
+}
+
+.card:hover .innovatorImage {
+    filter: sepia(0);
+    transform: scale(1.05);
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center alignment */
+    text-align: center;
+    padding: 0 8px;
+    /* Added inner padding for text as requested */
+}
+
+.headerInfo {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.idLabel {
+    /* Fixed font family to match project style (Huninn) */
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: 1.1rem;
+    color: #718096;
+    margin-right: 0.5rem;
+}
+
+.name {
+    display: inline;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #2d3748);
+}
+
+.nickname {
+    color: #718096;
+    font-size: 1rem;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
+    /* Increased line height for readability */
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-align-last: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    /* Limit lines to 5 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.6em * 5);
+}
+
+.groupTag {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #F6AD55;
+    /* Orange text for tag */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    width: 100%;
+}
+
+/* Placeholder Container */
+.placeholderContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF5F5;
+}
+
+/* Modal Popup Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    padding: 2rem 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #F1F5F9;
+    color: #475569;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+    z-index: 10;
+}
+
+.modalCloseButton:hover {
+    background-color: #E2E8F0;
+    color: #0F172A;
+    transform: scale(1.08);
+}
+
+/* Modal Masking Tape Colors (matching outside polaroid cards) */
+.modalTapeColor1 { --tape-color: #F6AD55; }
+.modalTapeColor2 { --tape-color: #4FD1C5; }
+.modalTapeColor3 { --tape-color: #FC8181; }
+.modalTapeColor4 { --tape-color: #68D391; }
+
+.modalIdMark {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.2rem;
+    width: 115px;
+    height: 35px;
+    isolation: isolate;
+    color: #0B1220;
+    font-family: var(--font-display, "Helvetica Neue", sans-serif);
+    font-weight: 900;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-15deg);
+    transform-origin: center center;
+    /* Serrated wavy torn edges like the tape outside */
+    clip-path: polygon(
+        0% 0%, 98% 0%, 100% 10%, 97% 20%, 100% 30%, 97% 40%, 100% 50%, 97% 60%, 100% 70%, 97% 80%, 100% 90%, 98% 100%,
+        2% 100%, 0% 90%, 3% 80%, 0% 70%, 3% 60%, 0% 50%, 3% 40%, 0% 30%, 3% 20%, 0% 10%, 2% 0%
+    );
+    filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.22));
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+}
+
+.modalIdMark::before {
+    /* Only the tape body is translucent; the text stays solid */
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--tape-color);
+    opacity: 0.55;
+}
+
+.modalHeader {
+    text-align: center;
+    margin-top: -0.7rem;
+    margin-bottom: 1.25rem;
+    padding-top: 0.25rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    flex-shrink: 0;
+}
+
+.modalTitle {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-primary, #2D3748);
+    margin: 0 0 0.35rem;
+    line-height: 1.35;
+}
+
+.modalPartner {
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #64748B;
+    margin: 0;
+}
+
+/* Polaroid frame: cream instant-film paper, thick bottom lip, slight tilt */
+.modalImageContainer {
+    position: relative;
+    width: 90%;
+    align-self: center;
+    box-sizing: border-box;
+    height: 283px;
+    min-height: 283px;
+    max-height: 283px;
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #FFFEFA 0%, #F7F3EA 100%);
+    border: 1px solid rgba(120, 100, 70, 0.28);
+    border-radius: 3px;
+    padding: 12px;
+    margin: -0.4rem 0 1.6rem;
+    overflow: visible;
+    transform: rotate(-1deg);
+    box-shadow:
+        0 14px 28px rgba(15, 23, 42, 0.28),
+        0 3px 6px rgba(15, 23, 42, 0.18),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.modalImageContainer::after {
+    /* Instant-film photo mask: inner shade + glossy highlight over the photo only */
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    height: 257px;
+    pointer-events: none;
+    box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.38), inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 38%);
+}
+
+.modalImage {
+    display: block;
+    width: 100%;
+    height: 257px;
+    min-height: 257px;
+    max-height: 257px;
+    object-fit: cover;
+    background-color: #F1F5F9;
+}
+
+.modalDescription {
+    font-size: 1.02rem;
+    color: #334155;
+    line-height: 1.85;
+    white-space: pre-line;
+    margin-bottom: 1.25rem;
+    text-align: justify;
+    padding: 0 0.5rem 0 0.25rem;
+    min-height: calc(1.85em * 5);
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.modalDescription::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modalDescription::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 4px;
+}
+
+.modalDescription::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.modalDescription::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.modalTagsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #E2E8F0;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.modalTagLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748B;
+}
+
+.modalTag {
+    display: inline-block;
+    background-color: #FFF7ED;
+    color: #EA580C;
+    border: 1px solid #FFEDD5;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes modalPopMobile {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Mobile RWD Styles for Modal (Fixed Image Height & Proportion) */
+@media (max-width: 640px) {
+    .modalOverlay {
+        padding: 0.75rem;
+    }
+
+    .modalContent {
+        padding: 1.35rem 1rem 1.15rem;
+        max-height: 94vh;
+        transform: none;
+        animation: modalPopMobile 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .modalIdMark {
+        top: 0.7rem;
+        left: 0.1rem;
+        width: 96px;
+        height: 30px;
+        font-size: 1rem;
+        transform: rotate(-15deg);
+    }
+
+    .modalCloseButton {
+        top: 0.65rem;
+        right: 0.65rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+
+    .modalHeader {
+        margin-top: -0.45rem;
+        margin-bottom: 0.85rem;
+        padding-top: 0;
+        padding-left: 2.75rem;
+        padding-right: 2.75rem;
+    }
+
+    .modalTitle {
+        font-size: 1.15rem;
+    }
+
+    .modalImageContainer {
+        height: 207px;
+        min-height: 207px;
+        max-height: 207px;
+        padding: 8px;
+        margin: -0.3rem 0 1.1rem;
+    }
+
+    .modalImageContainer::after {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        height: 189px;
+    }
+
+    .modalImage {
+        height: 189px;
+        min-height: 189px;
+        max-height: 189px;
+    }
+
+    .modalDescription {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        min-height: calc(1.7em * 5);
+        max-height: 180px;
+        margin-bottom: 0.85rem;
+        padding-right: 0.25rem;
+    }
+
+    .modalTagsWrapper {
+        padding-top: 0.75rem;
+        gap: 0.4rem;
+    }
+
+    .modalTag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+}

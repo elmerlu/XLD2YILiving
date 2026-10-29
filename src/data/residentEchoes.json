@@ -1,0 +1,92 @@
+[
+  {
+    "id": "echo-01",
+    "author": "住在 8 樓的鄰居",
+    "tag": "香草共餐小聚",
+    "cardImage": "/images/echoes/card-01.svg",
+    "themeColor": "#059669",
+    "themeBg": "#ecfdf5",
+    "content": "第一次參加青創辦的香草烤餅活動，原來鄰居家的小朋友這麼活潑！希望下次還能一起烤麵包～"
+  },
+  {
+    "id": "echo-02",
+    "author": "D2 匿名居民",
+    "tag": "空中跑道散步",
+    "cardImage": "/images/echoes/card-02.svg",
+    "themeColor": "#ea580c",
+    "themeBg": "#fff7ed",
+    "content": "每天下班在頂樓空中跑道看夕陽，吹著山邊的微風，整天的疲勞都消散了，生活很踏實。"
+  },
+  {
+    "id": "echo-03",
+    "author": "退休的林伯伯",
+    "tag": "樂齡木工手作",
+    "cardImage": "/images/echoes/card-03.svg",
+    "themeColor": "#b45309",
+    "themeBg": "#fefce8",
+    "content": "謝謝年輕人耐心地教我們老人家動手做小木椅，在社宅交到了同齡好棋友，日子變有趣了！"
+  },
+  {
+    "id": "echo-04",
+    "author": "新手媽媽 Amy",
+    "tag": "親子共讀派對",
+    "cardImage": "/images/echoes/card-04.svg",
+    "themeColor": "#db2777",
+    "themeBg": "#fdf2f8",
+    "content": "在公共交誼廳認識了同齡寶寶的媽媽，交換育兒經跟二手玩具，在社宅帶小孩突然覺得有伴了！"
+  },
+  {
+    "id": "echo-05",
+    "author": "租屋第 3 年的小張",
+    "tag": "中庭星空音樂會",
+    "cardImage": "/images/echoes/card-05.svg",
+    "themeColor": "#7c3aed",
+    "themeBg": "#faf5ff",
+    "content": "中庭傳來烏克麗麗樂聲的那晚，第一次真切覺得社宅不只是一棟大樓，而是一個真正的家。"
+  },
+  {
+    "id": "echo-06",
+    "author": "低樓層住戶",
+    "tag": "鄰里日常問候",
+    "cardImage": "/images/echoes/card-06.svg",
+    "themeColor": "#2563eb",
+    "themeBg": "#eff6ff",
+    "content": "早上倒垃圾在電梯裡互相點頭說早安，警衛室大哥親切的招呼，這些日常微光特別溫暖人心。"
+  },
+  {
+    "id": "echo-07",
+    "author": "愛喝湯的王阿姨",
+    "tag": "冬至共煮湯圓",
+    "cardImage": "/images/echoes/card-07.svg",
+    "themeColor": "#ea580c",
+    "themeBg": "#fff7ed",
+    "content": "煮了一大鍋甜湯圓拿到中庭分著吃，大家邊吹熱氣邊聊天，很有以前眷村鄰里串門子的味道！"
+  },
+  {
+    "id": "echo-08",
+    "author": "剛入住半年的工程師",
+    "tag": "社宅生活指南",
+    "cardImage": "/images/echoes/card-08.svg",
+    "themeColor": "#0d9488",
+    "themeBg": "#f0fdfa",
+    "content": "剛搬來時水電跟垃圾分類全靠網站上的急救包指引，省下好多摸索時間，真的是神隊友！"
+  },
+  {
+    "id": "echo-09",
+    "author": "三年級的小萱",
+    "tag": "植物敲染手作",
+    "cardImage": "/images/echoes/card-09.svg",
+    "themeColor": "#16a34a",
+    "themeBg": "#f0fdf4",
+    "content": "青創大姐姐帶我們在社宅花圃撿落葉，做成敲染提袋送給媽媽當生日禮物，媽媽收到超開心！"
+  },
+  {
+    "id": "echo-10",
+    "author": "熱心義工陳大哥",
+    "tag": "迎春剪紙春聯",
+    "cardImage": "/images/echoes/card-10.svg",
+    "themeColor": "#e11d48",
+    "themeBg": "#fff1f2",
+    "content": "過年前一起在梯廳揮毫寫春聯，看著每戶門口貼上紅通通的祝福，整棟大樓瞬間喜氣洋洋。"
+  }
+]

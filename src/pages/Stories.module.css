@@ -1,0 +1,303 @@
+.container {
+    padding: 4rem 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.moreButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.moreButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.moreButton:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* 同步狀態提示列外層居中容器（置於專欄導引區上方） */
+.syncBannerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto 0.75rem;
+    padding: 0 1rem;
+}
+
+/* 同步狀態提示列（支援三階段：同步中、成功、失敗） */
+.syncBanner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 0.55rem 1.35rem;
+    border-radius: 9999px;
+    animation: fadeIn 0.3s ease-out;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* 專欄頻道導引區（常駐於頁面） */
+.channelGuideContainer {
+    text-align: center;
+    margin: 0.5rem auto 1.25rem;
+    max-width: 700px;
+}
+
+.channelGuideText {
+    font-size: 1.02rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.85rem;
+    line-height: 1.5;
+}
+
+/* 第一階段：同步中（綠色） */
+.bannerSyncing {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+    color: #166534;
+    box-shadow: 0 3px 12px rgba(22, 101, 52, 0.06);
+}
+
+/* 第二階段-1：同步成功（綠色） */
+.bannerSuccess {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+    color: #166534;
+    box-shadow: 0 3px 12px rgba(22, 101, 52, 0.06);
+}
+
+/* 第二階段-2：同步失敗（橘色系） */
+.bannerError {
+    background: #FFF7ED;
+    border: 1.5px solid #FDBA74;
+    color: #9A3412;
+    box-shadow: 0 3px 12px rgba(234, 88, 12, 0.06);
+}
+
+.bannerContent {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.bannerText {
+    line-height: 1;
+}
+
+/* 同步旋轉 Icon 動畫 */
+.spinIcon {
+    animation: spin 1.2s linear infinite;
+    color: #16A34A;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bannerIconSuccess {
+    color: #16A34A;
+    flex-shrink: 0;
+}
+
+.bannerIconError {
+    color: #EA580C;
+    flex-shrink: 0;
+}
+
+/* 倒數計時紅圈圈與動畫 */
+.redCircleBadge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #FEF2F2;
+    border: 2px solid #EF4444;
+    color: #DC2626;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.45);
+    animation: redPulse 1.8s infinite ease-out;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+    font-family: inherit;
+}
+
+.redCircleBadge:hover {
+    background-color: #FEE2E2;
+    transform: scale(1.12);
+}
+
+@keyframes redPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.countdownNumber {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    animation: tickPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tickPop {
+    0% {
+        transform: scale(1.35);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cardContent {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardFooter {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Loading & Empty States */
+.loading,
+.emptyState {
+    text-align: center;
+    padding: 4rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.emptyTitle {
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+}
+
+.externalLink {
+    margin-top: 1.5rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 600;
+}

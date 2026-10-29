@@ -1,0 +1,120 @@
+name: Sync Medium Articles
+
+# ------------------------------------------------------------------
+# Medium 文章自動同步 + 部署（方法 A）
+#
+# 為什麼要這樣做：
+#   瀏覽器沒辦法直接讀 Medium 的 RSS（官方 Feed 沒有 CORS 標頭），
+#   以前靠第三方轉接（rss2json）又很容易被 Cloudflare 擋掉。
+#   所以改成：由 GitHub 的機器（Node，不受 CORS 限制）定時直連官方 Feed，
+#   把結果寫進 src/data/mediumArticles.json，網站直接讀這份檔案。
+#
+# 流程：
+#   1. 同步 Medium Feed（失敗自動重試 3 次）
+#   2. 沒有新文章 / 內容變動 → 到此結束（不 commit、不部署）
+#   3. 有變動 → commit 回 main → build → 部署到 gh-pages
+#
+# 手動觸發：GitHub → Actions → Sync Medium Articles → Run workflow
+# ------------------------------------------------------------------
+
+on:
+  schedule:
+    # 每天固定三個時段（台灣時間 UTC+8：09:55、15:55、21:55）
+    # 對應 UTC 時間：01:55、07:55、13:55（避開整點尖峰）
+    - cron: '55 1,7,13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write # 需要寫入：commit 回 main、推送 gh-pages
+
+# 同一時間只跑一個，避免兩次同步互相撞車（不取消進行中的，讓它跑完）
+concurrency:
+  group: sync-medium
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      # 同步腳本只用到 Node 內建功能，不需要先 npm ci
+      # --if-changed：沒變動就不動檔案，避免每小時都產生無意義的 commit
+      - name: Sync Medium articles (retry up to 3 times)
+        run: |
+          ok=0
+          for i in 1 2 3; do
+            if node scripts/fetch-medium.js --if-changed; then
+              ok=1
+              break
+            fi
+            echo "::warning::第 $i 次同步失敗，30 秒後重試"
+            sleep 30
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::Medium 同步連續 3 次失敗（Feed 可能被擋或格式改變）"
+            exit 1
+          fi
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if [ -n "$(git status --porcelain -- src/data/mediumArticles.json)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 先 commit 並 rebase，萬一你剛好也手動 push 過，不會互相覆蓋
+      - name: Commit updated records to main
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/mediumArticles.json
+          git commit -m "chore: auto-sync Medium articles"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Install dependencies
+        if: steps.diff.outputs.changed == 'true'
+        run: npm ci
+
+      # 執行 npm run build（會自動觸發跨平台的 postbuild: node scripts/postbuild.js，
+      # 一併產生 dist/404.html 與各子路由的實體 index.html，確保 GitHub Pages 回傳 HTTP 200）
+      - name: Build
+        if: steps.diff.outputs.changed == 'true'
+        run: npm run build
+
+      # 部署編譯後的 dist 靜態成品至公開發布倉 (elmerlu/XLD2YILiving) 的 gh-pages 分支
+      # --no-history：每次部署皆抹除舊有 gh-pages 歷史紀錄，僅保留最新編譯成品
+      # -x：不印出含 token 的 repo 網址
+      - name: Deploy to public gh-pages repository
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.PUBLIC_PAGES_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages --no-history -d dist -x \
+            -m "chore: deploy after Medium sync" \
+            -u "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
+            -r "https://x-access-token:${GH_TOKEN}@github.com/elmerlu/XLD2YILiving.git"
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+            echo "### ✅ 有新文章或內容變動：已更新紀錄並部署" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### ➖ 沒有新文章或內容變動：未 commit、未部署" >> "$GITHUB_STEP_SUMMARY"
+          fi
