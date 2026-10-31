@@ -396,7 +396,8 @@ const CommunityGroupsModal = ({ isOpen, onClose }) => {
                             className={`${styles.tabBtn} ${activeTab === 'all' ? styles.tabActive : ''}`}
                             onClick={() => setActiveTab('all')}
                         >
-                            全部群組 ({totalCount})
+                            <span className={styles.tabTextFull}>全部群組 ({totalCount})</span>
+                            <span className={styles.tabTextShort}>全部 ({totalCount})</span>
                         </button>
                         <button
                             type="button"
@@ -405,7 +406,8 @@ const CommunityGroupsModal = ({ isOpen, onClose }) => {
                             className={`${styles.tabBtn} ${activeTab === 'facebook' ? styles.tabActiveFb : ''}`}
                             onClick={() => setActiveTab('facebook')}
                         >
-                            Facebook 粉專與社團 ({fbGroups.length})
+                            <span className={styles.tabTextFull}>Facebook 粉專與社團 ({fbGroups.length})</span>
+                            <span className={styles.tabTextShort}>FB 社群 ({fbGroups.length})</span>
                         </button>
                         <button
                             type="button"
@@ -414,7 +416,8 @@ const CommunityGroupsModal = ({ isOpen, onClose }) => {
                             className={`${styles.tabBtn} ${activeTab === 'line' ? styles.tabActiveLine : ''}`}
                             onClick={() => setActiveTab('line')}
                         >
-                            LINE 交流與社團 ({lineGroups.length})
+                            <span className={styles.tabTextFull}>LINE 交流與社團 ({lineGroups.length})</span>
+                            <span className={styles.tabTextShort}>LINE 群組 ({lineGroups.length})</span>
                         </button>
                     </div>
                 </div>
