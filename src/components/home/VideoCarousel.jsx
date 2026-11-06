@@ -2,10 +2,17 @@ import { useState, useRef } from 'react'
 import { ChevronLeft, ChevronRight, Play, SkipForward, Volume2, Settings, Maximize2, ExternalLink } from 'lucide-react'
 import styles from './VideoCarousel.module.css'
 import homeVideos from '../../data/homeVideos.json'
-import defaultPoster from '../../assets/images/lifestyle/lantern.png'
+import midAutumnThumbnail from '../../assets/images/lifestyle/mid-autumn-concert-thumb.jpg'
 
 // 判斷是否為 YouTube 影片
 const isYoutubeVideo = (url) => typeof url === 'string' && (url.includes('youtube.com') || url.includes('youtu.be'))
+
+// 從 Google Drive 網址自動解析官方高解析度縮圖
+const getDriveThumbnail = (url) => {
+    if (!url) return null
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/)
+    return match && match[1] ? `https://lh3.googleusercontent.com/d/${match[1]}=w1280` : null
+}
 
 // 目前依指示 1-7 全數保留顯示（1-4 新片，5-7 舊片依序排後備存）
 // 若未來需從前端將 5-7 舊片移除，只需將此處改為 homeVideos.filter(v => v.status === 'active')，資料面持續完整備存
@@ -218,7 +225,7 @@ const VideoCarousel = () => {
                                                 {/* 背景縮圖與電影感光暈 */}
                                                 <div className={styles.skinBackdrop}>
                                                     <img
-                                                        src={video.thumbnail || defaultPoster}
+                                                        src={video.thumbnail || (video.id === 1 ? midAutumnThumbnail : getDriveThumbnail(video.url))}
                                                         alt={video.title}
                                                         className={styles.skinThumbnail}
                                                     />
