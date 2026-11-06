@@ -1,33 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import styles from './VideoCarousel.module.css'
+import homeVideos from '../../data/homeVideos.json'
 
-const videos = [
-    {
-        id: 1,
-        url: 'https://www.youtube.com/embed/Xmv1HVnitlY?enablejsapi=1',
-        title: '2018/12-2019/10 興隆社宅青創夥伴大家辛苦了!!!',
-        description: ''
-    },
-    {
-        id: 2,
-        url: 'https://www.youtube.com/embed/F9vFcgdWyDc?enablejsapi=1',
-        title: '住興隆社宅D2，如果真的發生火災，怎麼避難?',
-        description: ''
-    },
-    {
-        id: 3,
-        url: 'https://www.youtube.com/embed/QAKGMUPvH5A?enablejsapi=1',
-        title: '興隆社宅心榮新生活',
-        description: '以興隆D2社宅為拍攝主體，在社區裡的，青創夥伴是社區種子也同時是社宅住戶，分享入住一年以來發生許多酸甜苦辣的社宅生活，並同時邀請一同滾動社區事務的好朋友好鄰居用真實的活動影像及訪談說故事，共同建立起溫暖的家，形塑社會住宅生活風格。'
-    }
-]
+// 目前依指示 1-7 全數保留顯示（1-4 新片，5-7 舊片依序排後備存）
+// 若未來需從前端將 5-7 舊片移除，只需將此處改為 homeVideos.filter(v => v.status === 'active')，資料面持續完整備存
+const videos = homeVideos
 
 const VideoCarousel = () => {
     // Clone first and last slides for infinite loop
-    // [Last, 0, 1, 2, First]
-    // Indices: 0, 1, 2, 3, 4
-    // Real content is at 1, 2, 3
     const extendedVideos = [
         { ...videos[videos.length - 1], id: 'clone-last' },
         ...videos,
@@ -44,7 +25,7 @@ const VideoCarousel = () => {
     const iframeRefs = useRef({})
     const dragStartedRef = useRef(false)
 
-    // Calculate the 'real' active index for dots and text (0, 1, 2)
+    // Calculate the 'real' active index for dots and text (0 ~ videos.length - 1)
     const realIndex = currentIndex === 0
         ? videos.length - 1
         : currentIndex === extendedVideos.length - 1
@@ -212,7 +193,7 @@ const VideoCarousel = () => {
                                 <div key={`${video.id}-${index}`} className={styles.slide}>
                                     {/* 
                                       當未播放時，Overlay 覆蓋上方捕捉拖曳與點擊；
-                                      當點擊播放後，Overlay 讓位 (pointer-events: none)，讓原生 YouTube 控制項完全可互動。
+                                      當點擊播放後，Overlay 讓位 (pointer-events: none)，讓原生播放控制項完全可互動。
                                     */}
                                     <div
                                         className={`${styles.slideOverlay} ${isPlayingThis ? styles.hiddenOverlay : ''}`}
