@@ -151,3 +151,406 @@
         height: 20px;
     }
 }
+
+/* ========================================================
+   YouTube 仿生播放器外觀 (針對雲端/非YT影片)
+   ======================================================== */
+.customPlayerSkin {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.skinHidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 背景縮圖與電影感暗部 */
+.skinBackdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #0f1115;
+}
+
+.skinThumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.68) contrast(1.08) saturate(1.1);
+    transform: scale(1.02);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.customPlayerSkin:hover .skinThumbnail {
+    transform: scale(1.05);
+}
+
+.skinVignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.78) 100%),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, transparent 28%, transparent 68%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+/* 頂部資訊列 (YouTube 風格) */
+.skinTopBar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    pointer-events: auto;
+}
+
+.skinChannelInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.skinAvatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    flex-shrink: 0;
+}
+
+.skinTitleGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.skinVideoTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    line-height: 1.3;
+    letter-spacing: 0.2px;
+}
+
+.skinChannelName {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 2px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.skinExternalBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(20, 20, 25, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.45rem 0.95rem;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.skinExternalBtn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+/* 中央 YouTube 經典紅色播放按鈕 */
+.skinCenterPlay {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    cursor: pointer;
+}
+
+.ytRedPlayBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6));
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.25s ease;
+}
+
+.ytRedPlayBtn:hover {
+    transform: scale(1.16);
+    filter: drop-shadow(0 8px 24px rgba(255, 0, 0, 0.7));
+}
+
+.ytRedPlayBtn:active {
+    transform: scale(0.96);
+}
+
+.ytBtnBg {
+    fill: #ff0000;
+    transition: fill 0.2s ease;
+}
+
+.ytRedPlayBtn:hover .ytBtnBg {
+    fill: #e60000;
+}
+
+.skinPlayPrompt {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    padding: 0.3rem 0.85rem;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+}
+
+/* 底部 YouTube 風格控制列 */
+.skinBottomBar {
+    position: relative;
+    z-index: 2;
+    padding: 0 1.25rem 0.85rem;
+    pointer-events: auto;
+}
+
+.skinProgressBar {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    margin-bottom: 0.65rem;
+    transition: height 0.15s ease;
+    cursor: pointer;
+}
+
+.customPlayerSkin:hover .skinProgressBar {
+    height: 5px;
+}
+
+.skinProgressBuffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.42);
+    border-radius: 2px;
+}
+
+.skinProgressPlayed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #ff0000;
+    border-radius: 2px;
+}
+
+.skinProgressPin {
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 12px;
+    height: 12px;
+    background: #ff0000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    transition: transform 0.15s ease;
+}
+
+.customPlayerSkin:hover .skinProgressPin {
+    transform: translateY(-50%) scale(1);
+}
+
+.skinControlsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skinControlsLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.skinControlsRight {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.skinIconBtn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.92);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.skinIconBtn:hover {
+    color: #ffffff;
+    transform: scale(1.12);
+}
+
+.skinVolumeGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.skinVolumeBar {
+    width: 50px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.skinVolumeFill {
+    width: 75%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+.skinTimeText {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.5px;
+    margin-left: 0.25rem;
+}
+
+.skinBadgeHd {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    padding: 1px 4px;
+    border-radius: 3px;
+    line-height: 1;
+}
+
+.skinCcBadge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    border: 1.5px solid currentColor;
+    padding: 0 3px;
+    border-radius: 2px;
+    line-height: 1.1;
+}
+
+/* 播放中狀態：右上角懸浮操作列 */
+.activeFloatingBar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.floatingPillBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(15, 15, 20, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.floatingPillBtn:hover {
+    background: rgba(30, 30, 38, 0.92);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .skinTopBar {
+        padding: 0.75rem 1rem;
+    }
+
+    .skinAvatar {
+        width: 30px;
+        height: 30px;
+        font-size: 0.65rem;
+    }
+
+    .skinVideoTitle {
+        font-size: 0.92rem;
+    }
+
+    .skinChannelName {
+        display: none;
+    }
+
+    .skinExternalBtn span {
+        display: none;
+    }
+
+    .skinExternalBtn {
+        padding: 0.4rem;
+        border-radius: 50%;
+    }
+
+    .ytRedPlayBtn svg {
+        width: 54px;
+        height: 38px;
+    }
+
+    .skinVolumeGroup {
+        display: none;
+    }
+
+    .skinControlsRight .skinBadgeHd,
+    .skinControlsRight button:nth-child(2) {
+        display: none;
+    }
+
+    .skinBottomBar {
+        padding: 0 0.85rem 0.65rem;
+    }
+}
