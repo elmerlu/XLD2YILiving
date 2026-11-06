@@ -18,7 +18,7 @@ if (!existsSync(indexHtml)) {
 
 // Keep this list in sync with the <Route path="..."> entries in src/App.jsx
 // ("/" is already dist/index.html, "/index" just redirects to "/", "/cropper" is DEV-only)
-const routes = ['stories', 'guide', 'funding', 'sync-status', 'index']
+const routes = ['stories', 'guide', 'funding', 'activities', 'sync-status', 'index']
 
 // Fallback page for any unknown URL
 copyFileSync(indexHtml, join(dist, '404.html'))

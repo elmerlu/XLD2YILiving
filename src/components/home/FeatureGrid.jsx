@@ -19,8 +19,8 @@ const features = [
     {
         id: 3,
         title: '社宅花絮剪影',
-        description: '施工中',
-        link: '#',
+        description: '回顧社宅四大類精彩活動！<br>手作、灶咖、運動與走讀的溫暖日常！',
+        link: '/activities',
         color: '#3182CE' // Blue
     },
     {

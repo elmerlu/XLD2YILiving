@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Stories from './pages/Stories'
 import Guide from './pages/Guide'
 import Funding from './pages/Funding'
+import Activities from './pages/Activities'
 import PhotoCropper from './pages/PhotoCropper'
 import SyncStatus from './pages/SyncStatus' // 內部工程頁，不對外
 import NotFound from './pages/NotFound'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/stories" element={<Stories />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/funding" element={<Funding />} />
+        <Route path="/activities" element={<Activities />} />
         {import.meta.env.DEV && <Route path="/cropper" element={<PhotoCropper />} />}
         <Route path="/sync-status" element={<SyncStatus />} />
         <Route path="*" element={<NotFound />} />

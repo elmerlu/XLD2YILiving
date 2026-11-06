@@ -30,7 +30,7 @@ const ACTIVITIES = [
             "像是「音樂灶咖」把現場演奏帶進廚房，邀請社區的料理達人和樂手老師，一邊學做菜一邊聽音樂，結束後把料理打包回家當晚餐。或是「興隆路上・島嶼餐桌」則加入飲食文學，大家從一道菜聊起各自的家鄉與記憶，並在現場寫下屬於自己的飲食故事。"
         ],
         image: musicKitchenImg,
-        link: "#"
+        link: "https://drive.google.com/file/d/1uDs7pjXG4vHbFz_taUkbn_leicG2fxl4/view"
     },
     {
         id: 3,
