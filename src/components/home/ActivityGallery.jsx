@@ -7,10 +7,57 @@ import lanternImg from '../../assets/images/lifestyle/lantern.png'
 import christmasImg from '../../assets/images/lifestyle/christmas.jpg'
 import riverImg from '../../assets/images/lifestyle/river.jpg'
 import musicKitchenImg from '../../assets/images/lifestyle/music-kitchen.png'
+import sportsFitnessImg from '../../assets/images/lifestyle/sports-fitness.svg'
 
 const ACTIVITIES = [
     {
         id: 1,
+        category: "手作活動",
+        title: "手作興生活｜動手做，把生活變有趣",
+        description: [
+            "興隆D2的手作活動，是社區裡最常見的週末風景。有給大人的進階手作，像是絹印、簇絨；有讓大小朋友一起完成的親子手作；也有跟著節慶走的主題手作，過年做剪紙木工燈籠，聖誕節組一棵自己的聖誕樹。",
+            "大家從不認識到互相幫忙，帶回家的除了作品，還有新認識的鄰居。部分活動也會請參加者寫下小學習單，分享他們知道的興隆小知識，慢慢累積成社區的共同記憶。"
+        ],
+        image: lanternImg,
+        link: "https://www.facebook.com/share/p/17sATRxakd/"
+    },
+    {
+        id: 2,
+        category: "廚藝烹飪活動",
+        title: "灶咖作伙｜一起煮、一起吃",
+        description: [
+            "在興隆，廚房是認識鄰居最快的地方。除了烹飪教學，我們也辦共餐，讓忙碌的住戶下班後有一桌熱飯。",
+            "像是「音樂灶咖」把現場演奏帶進廚房，邀請社區的料理達人和樂手老師，一邊學做菜一邊聽音樂，結束後把料理打包回家當晚餐。或是「興隆路上・島嶼餐桌」則加入飲食文學，大家從一道菜聊起各自的家鄉與記憶，並在現場寫下屬於自己的飲食故事。"
+        ],
+        image: musicKitchenImg,
+        link: "#"
+    },
+    {
+        id: 3,
+        category: "運動活動",
+        title: "動起來興隆｜老中青都找得到的運動",
+        description: [
+            "社區裡的運動活動，從長輩的樂齡運動、上班族的下班伸展，到孩子的體能遊戲，不同年齡層都找得到適合自己的節奏。",
+            "D2 十二樓還有一間健身房，是青創夥伴和住戶一起動手、協力完成的，除了住戶，也開放附近的里民一起參加、一起使用。對大家來說，運動不只是鍛鍊身體，也是鄰居們固定見面、互相打氣的時間。"
+        ],
+        image: sportsFitnessImg,
+        link: "#"
+    },
+    {
+        id: 4,
+        category: "主題型活動",
+        title: "生活大小事｜走讀與講座",
+        description: [
+            "我們也和不同單位合作，辦理生態走讀與知識型講座。各式主題活動，由地方自然資源的，到承襲文化生長的農特產，也有民眾民生相關的。",
+            "從住戶每天會遇到的事，柴米油鹽的生活知識，到勞保勞退等勞動權益、居住權益，讓大家在社區裡就能把重要的資訊帶回家。"
+        ],
+        image: riverImg,
+        link: "#"
+    },
+    // 以下為舊活動紀錄備存（依指示排於四大類後方）
+    {
+        id: 5,
+        category: "手作活動（紀錄）",
         title: "【玩中學、做中學】新年紅紅火火！剪紙 × 木工燈籠 DIY",
         description: [
             "農曆新年即將到來，今年不妨一起動手打造一份充滿節慶氣息的手作燈籠吧！",
@@ -21,7 +68,8 @@ const ACTIVITIES = [
         link: "https://www.facebook.com/share/p/17sATRxakd/"
     },
     {
-        id: 2,
+        id: 6,
+        category: "手作活動（紀錄）",
         title: "【手作興生活】叮叮噹！我的聖誕樹自己裝",
         description: [
             "聖誕節的腳步近了～🎅 今年，不如自己動手打造一棵專屬的聖誕樹吧！一起用創意與雙手，感受滿滿節慶氛圍 ❤️",
@@ -32,7 +80,8 @@ const ACTIVITIES = [
         link: "#"
     },
     {
-        id: 3,
+        id: 7,
+        category: "主題活動（紀錄）",
         title: "溪路小達人：家裡水邊這麼近",
         description: [
             "冬天的溪流呈現什麼樣貌呢？本次希望帶領大家觀察小坑溪、指南溪等小支流，運用 iNaturalist 學習觀察野草野花，觀測水質、觀察溪流地形，一同幫河川體檢，成為小溪達人！",
@@ -42,7 +91,8 @@ const ACTIVITIES = [
         link: "#"
     },
     {
-        id: 4,
+        id: 8,
+        category: "廚藝活動（紀錄）",
         title: "音樂灶咖，作伙開火！",
         description: [
             "音樂灶咖邀請社區酵母菌阿瑛姐與音樂城市計畫帥氣樂手老師阿明，現場學習料理，品嚐料理，享受音樂演出。",
@@ -85,6 +135,11 @@ const ActivityGallery = () => {
                         <div className={styles.verticalLabel}>興隆軌跡</div>
 
                         <div className={styles.mainContent} key={currentActivity.id}>
+                            {currentActivity.category && (
+                                <div className={styles.categoryBadge}>
+                                    {currentActivity.category}
+                                </div>
+                            )}
                             <h2 className={styles.title}>{currentActivity.title}</h2>
                             <div className={styles.description}>
                                 {currentActivity.description.map((paragraph, index) => (
@@ -95,7 +150,7 @@ const ActivityGallery = () => {
                             </div>
 
                             <div className={styles.buttonGroup}>
-                                {currentActivity.link !== '#' && (
+                                {currentActivity.link && currentActivity.link !== '#' && (
                                     <a
                                         href={currentActivity.link}
                                         target="_blank"
@@ -106,10 +161,15 @@ const ActivityGallery = () => {
                                         <span>活動詳情</span>
                                     </a>
                                 )}
-                                <button className={styles.actionButton}>
+                                <a
+                                    href="https://www.facebook.com/xinglongph2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.actionButton}
+                                >
                                     <Info size={16} />
                                     <span>更多紀錄</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
 
