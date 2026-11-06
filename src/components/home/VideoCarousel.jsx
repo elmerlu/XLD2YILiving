@@ -225,7 +225,7 @@ const VideoCarousel = () => {
                                                 {/* 背景縮圖與電影感光暈 */}
                                                 <div className={styles.skinBackdrop}>
                                                     <img
-                                                        src={video.thumbnail || (video.id === 1 ? midAutumnThumbnail : getDriveThumbnail(video.url))}
+                                                        src={video.thumbnail || (video.title?.includes('中秋') ? midAutumnThumbnail : getDriveThumbnail(video.url))}
                                                         alt={video.title}
                                                         className={styles.skinThumbnail}
                                                     />
