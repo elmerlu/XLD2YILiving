@@ -1,7 +1,39 @@
 @font-face {
   font-family: 'jf-openhuninn';
-  src: url('/src/assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
-  font-weight: normal;
+  src: url('./assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-openhuninn';
+  src: url('./assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-openhuninn';
+  src: url('./assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-openhuninn';
+  src: url('./assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-openhuninn';
+  src: url('./assets/fonts/jf-openhuninn-2.1.ttf') format('truetype');
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
