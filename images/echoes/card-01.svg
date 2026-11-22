@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="265" viewBox="0 0 440 265">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="112%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.07"/>
+    </filter>
+  </defs>
+
+  <!-- 紙張本體 (Spacious Paper Card Body) -->
+  <rect x="14" y="16" width="412" height="234" rx="16" fill="#fffdf7" stroke="#fde68a" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <!-- 紙膠帶 (Washi Tape) -->
+  <rect x="165" y="7" width="110" height="18" rx="3" fill="#86efac" opacity="0.82" transform="rotate(-1.2 220 16)"/>
+
+  <!-- 小卡頁首：活動 Tag 與日期 -->
+  <text x="38" y="56" font-family="'jf-openhuninn', 'Microsoft JhengHei', 'PingFang TC', sans-serif" font-size="13" font-weight="700" fill="#475569">🌿 香草共餐小聚</text>
+  <text x="396" y="56" text-anchor="end" font-family="'Courier New', monospace" font-size="11.5" font-weight="bold" fill="#94a3b8">2025.秋</text>
+  <line x1="36" y1="70" x2="400" y2="70" stroke="#fde68a" stroke-width="1.2" opacity="0.85"/>
+
+  <!-- 手寫格線裝飾 -->
+  <line x1="36" y1="114" x2="298" y2="114" stroke="#fde68a" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.7"/>
+    <line x1="36" y1="146" x2="298" y2="146" stroke="#fde68a" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.7"/>
+    <line x1="36" y1="178" x2="298" y2="178" stroke="#fde68a" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.7"/>
+
+  <!-- 手寫體實體假文字 -->
+  <text x="38" y="106" font-family="'jf-openhuninn', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif" font-size="14.5" font-weight="500" fill="#1e293b" letter-spacing="0.8">第一次參加青創辦的香草烤餅，</text>
+    <text x="38" y="138" font-family="'jf-openhuninn', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif" font-size="14.5" font-weight="500" fill="#1e293b" letter-spacing="0.8">原來鄰居家的小朋友這麼活潑！</text>
+    <text x="38" y="170" font-family="'jf-openhuninn', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif" font-size="14.5" font-weight="500" fill="#1e293b" letter-spacing="0.8">希望下次還能一起烤麵包～</text>
+
+  <!-- 右側手繪主題插圖 (留有充裕呼吸空間) -->
+  
+      <g transform="translate(322, 72) scale(0.95)">
+        <circle cx="45" cy="45" r="42" fill="#ecfdf5"/>
+        <path d="M30 55 L35 75 L55 75 L60 55 Z" fill="#fcd34d" stroke="#b45309" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M45 55 L45 30 Q45 20 32 23 Q40 37 45 40" fill="#34d399" stroke="#047857" stroke-width="1.8"/>
+        <path d="M45 42 Q50 28 60 32 Q55 44 45 48" fill="#10b981" stroke="#047857" stroke-width="1.8"/>
+        <circle cx="32" cy="22" r="2.5" fill="#fef08a"/>
+      </g>
+    
+
+  <!-- 住民手寫簽名 -->
+  <text x="398" y="224" text-anchor="end" font-family="'jf-openhuninn', 'Microsoft JhengHei', 'PingFang TC', sans-serif" font-size="12.5" font-weight="600" fill="#64748b">—— 住在 8 樓的鄰居 筆</text>
+
+  <!-- 團隊印章 -->
+  <g transform="translate(38, 198) scale(0.88)">
+    <circle cx="20" cy="18" r="17" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+    <text x="20" y="22" text-anchor="middle" font-family="'jf-openhuninn', 'Microsoft JhengHei', sans-serif" font-size="9.5" font-weight="bold" fill="#ef4444" opacity="0.8">興隆D2</text>
+  </g>
+</svg>
