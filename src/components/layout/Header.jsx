@@ -44,7 +44,7 @@ const Header = () => {
                 <Link to="/" className={styles.logo}>
                     <img src={logo} alt="Logo" style={{ height: '40px', objectFit: 'contain' }} />
                     <img src={logoHeaderIcon} alt="LOGO-HEADER" style={{ height: '24px', objectFit: 'contain', marginLeft: '0.5rem', marginRight: '0.5rem' }} />
-                    <h3 className={styles.siteTitle}>興隆募知募資</h3>
+                    <h3 className={styles.siteTitle}>興隆募知募資（測試）</h3>
                 </Link>
 
                 {/* Desktop Navigation */}
