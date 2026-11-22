@@ -11,7 +11,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "node scripts/fetch-medium.js --if-changed && npm run build",
     "deploy": "gh-pages --no-history -d dist -r https://github.com/elmerlu/XLD2YILiving.git",
     "postbuild": "node scripts/postbuild.js"
   },

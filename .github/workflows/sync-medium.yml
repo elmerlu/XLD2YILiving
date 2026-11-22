@@ -34,6 +34,8 @@ concurrency:
 
 jobs:
   sync:
+    # 僅在公開發布倉 (elmerlu/XLD2YILiving) 執行自動排程，避免私人開發倉重複執行與產生機器人 commit
+    if: github.repository == 'elmerlu/XLD2YILiving'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 

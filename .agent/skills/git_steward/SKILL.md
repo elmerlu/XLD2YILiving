@@ -38,5 +38,10 @@ As the **Git & Release Steward**, your primary mission is to manage the project'
 
 ### [V-05] Push & Deploy Confirmation (推送與部署確認)
 - Create local commits first and report the commit hashes and file stats (`git log --stat`).
-- Always obtain explicit user confirmation before executing `git push` or `npm run deploy` to the live environment.
+- Always obtain explicit user confirmation before executing `git push public-pages` or `npm run deploy` to the live environment.
+- **Public Release SOP**: When the user explicitly authorizes deploying to the public repository (`public-pages`), always execute in this order:
+  1. `git pull --rebase public-pages main` (to integrate any `mediumArticles.json` auto-sync commits made by the public repository's GitHub Action)
+  2. `git push origin main` (sync private dev repo)
+  3. `git push public-pages main` (sync public repo source)
+  4. `npm run deploy` (runs `predeploy` Medium sync + build + deploys `dist/` to `public-pages` `gh-pages` branch)
 
