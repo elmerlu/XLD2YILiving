@@ -72,12 +72,16 @@
     }
 }
 
-/* 跑馬燈軌道容器，左右兩側柔和漸層淡出遮罩 (Fade Mask) */
+/* 跑馬燈軌道容器，左右兩側柔和漸層淡出遮罩 (Fade Mask)，支援滑鼠拖曳與觸控左右滑動 */
 .marqueeContainer {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
     position: relative;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
     mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%,
@@ -94,18 +98,16 @@
     );
 }
 
-/* 無縫輪播軌道：加大間距讓視覺更寬敞呼吸 */
+.dragging {
+    cursor: grabbing;
+}
+
+/* 無縫輪播軌道：由 JS requestAnimationFrame 與 Pointer Drag 共同驅動 */
 .marqueeTrack {
     display: flex;
     gap: 2.25rem;
     width: max-content;
-    animation: scroll 54s linear infinite;
     padding: 1rem 0.75rem 1.75rem;
-}
-
-/* 滑鼠 Hover 暫停輪播，讓訪客細看小卡內容與插圖 */
-.marqueeContainer:hover .marqueeTrack {
-    animation-play-state: paused;
 }
 
 /* 卡片本體外框 */
@@ -120,7 +122,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
-    cursor: default;
+    cursor: inherit;
     user-select: none;
     position: relative;
 }
@@ -131,9 +133,10 @@
     border-color: var(--theme-color, rgba(99, 102, 241, 0.5));
 }
 
-/* 上半部：實體手寫模擬小卡原件容器 */
+/* 上半部：實體手寫小卡與模擬小卡統一高度容器 */
 .cardImageContainer {
     width: 100%;
+    height: 270px;
     background: #f8fafc;
     overflow: hidden;
     position: relative;
@@ -145,10 +148,12 @@
 
 .cardImg {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
     border-radius: 14px;
     transition: transform 0.3s ease;
+    pointer-events: none;
 }
 
 .echoCard:hover .cardImg {
@@ -192,13 +197,16 @@
     text-overflow: ellipsis;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50% - 1.125rem));
-    }
+.realBadge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #059669;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -208,6 +216,9 @@
     .echoCard {
         width: 335px;
     }
+    .cardImageContainer {
+        height: 220px;
+    }
     .cardExtractBar {
         padding: 0.75rem 1rem 0.85rem;
     }
@@ -215,7 +226,6 @@
         font-size: 0.8rem;
     }
     .marqueeTrack {
-        animation-duration: 38s;
         gap: 1.4rem;
     }
     .echoesHeader {

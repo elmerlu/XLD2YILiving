@@ -1,5 +1,35 @@
 [
   {
+    "id": "echo-f02-01",
+    "author": "紅茶",
+    "tag": "興隆路上・島嶼的餐桌",
+    "cardImage": "/images/echoes/f02-card-01.jpg",
+    "themeColor": "#c2410c",
+    "themeBg": "#fff7ed",
+    "isReal": true,
+    "content": "對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。謝謝阿瑛師，帶給我們如此樸實溫暖的熱湯！"
+  },
+  {
+    "id": "echo-f02-02",
+    "author": "島嶼的餐桌參與夥伴",
+    "tag": "興隆路上・島嶼的餐桌",
+    "cardImage": "/images/echoes/f02-card-02.jpg",
+    "themeColor": "#b45309",
+    "themeBg": "#fef3c7",
+    "isReal": true,
+    "content": "外婆總拉著我不停念說下次要提前說要回來，外婆才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。"
+  },
+  {
+    "id": "echo-f02-03",
+    "author": "陳大姐",
+    "tag": "興隆路上・島嶼的餐桌",
+    "cardImage": "/images/echoes/f02-card-03.jpg",
+    "themeColor": "#e11d48",
+    "themeBg": "#fff1f2",
+    "isReal": true,
+    "content": "豬腳煮花生，心想事成，今天就是想吃花生，謝謝大家，謝謝紅茶妹妹！蛋糕也好吃，兩種美食都不會太甜、太鹹，合現代人健康美食的口味，讚！"
+  },
+  {
     "id": "echo-01",
     "author": "住在 8 樓的鄰居",
     "tag": "香草共餐小聚",
