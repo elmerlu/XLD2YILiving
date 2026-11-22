@@ -29,9 +29,9 @@ const ACTIVITIES = [
             "像是「音樂灶咖」把現場演奏帶進廚房，邀請社區的料理達人和樂手老師，一邊學做菜一邊聽音樂，結束後把料理打包回家當晚餐。或是「興隆路上・島嶼餐桌」則加入飲食文學，大家從一道菜聊起各自的家鄉與記憶，並在現場寫下屬於自己的飲食故事。"
         ],
         quotes: [
-            { text: "「對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。」", author: "島嶼的餐桌參與夥伴" },
-            { text: "「外婆總拉著我說下次要提前說要回來，才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。」", author: "島嶼的餐桌參與夥伴" },
-            { text: "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」", author: "島嶼的餐桌參與夥伴" }
+            "「對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。」",
+            "「外婆總拉著我說下次要提前說要回來，才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。」",
+            "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」"
         ],
         image: musicKitchenImg,
         link: "https://drive.google.com/file/d/1uDs7pjXG4vHbFz_taUkbn_leicG2fxl4/view"
@@ -115,11 +115,10 @@ const ActivityGallery = () => {
                                             ))}
                                             {activity.quotes && (
                                                 <div className={styles.quotesBox}>
-                                                    <div className={styles.quotesHeader}>🍲 島嶼的餐桌・活動回饋摘錄</div>
+                                                    <div className={styles.quotesHeader}>🍲 島嶼的餐桌參與夥伴・活動回饋摘錄</div>
                                                     {activity.quotes.map((q, qIdx) => (
                                                         <div key={qIdx} className={styles.quoteItem}>
-                                                            <span className={styles.quoteText}>{q.text}</span>
-                                                            <span className={styles.quoteAuthor}>—— {q.author}</span>
+                                                            <span className={styles.quoteText}>{q}</span>
                                                         </div>
                                                     ))}
                                                 </div>
