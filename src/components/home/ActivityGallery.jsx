@@ -29,12 +29,11 @@ const ACTIVITIES = [
             "像是「音樂灶咖」把現場演奏帶進廚房，邀請社區的料理達人和樂手老師，一邊學做菜一邊聽音樂，結束後把料理打包回家當晚餐。或是「興隆路上・島嶼餐桌」則加入飲食文學，大家從一道菜聊起各自的家鄉與記憶，並在現場寫下屬於自己的飲食故事。"
         ],
         quotes: [
-            { text: "「對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。」", author: "紅茶" },
-            { text: "「外婆總拉著我說下次要提前說要回來，才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。」", author: "參與住戶" },
-            { text: "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」", author: "陳大姐" }
+            { text: "「對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。」", author: "島嶼的餐桌參與夥伴" },
+            { text: "「外婆總拉著我說下次要提前說要回來，才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。」", author: "島嶼的餐桌參與夥伴" },
+            { text: "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」", author: "島嶼的餐桌參與夥伴" }
         ],
         image: musicKitchenImg,
-        isSquareImage: true,
         link: "https://drive.google.com/file/d/1uDs7pjXG4vHbFz_taUkbn_leicG2fxl4/view"
     },
     {
@@ -92,54 +91,68 @@ const ActivityGallery = () => {
                     <div className={styles.textContent}>
                         <div className={styles.verticalLabel}>興隆軌跡</div>
 
-                        <div className={styles.mainContent} key={currentActivity.id}>
-                            {currentActivity.category && (
-                                <div className={styles.categoryBadge}>
-                                    {currentActivity.category}
-                                </div>
-                            )}
-                            <h2 className={styles.title}>{currentActivity.title}</h2>
-                            <div className={styles.description}>
-                                {currentActivity.description.map((paragraph, index) => (
-                                    <p key={index} className={styles.paragraph}>
-                                        {paragraph}
-                                    </p>
-                                ))}
-                                {currentActivity.quotes && (
-                                    <div className={styles.quotesBox}>
-                                        <div className={styles.quotesHeader}>🍲 島嶼的餐桌・活動回饋摘錄</div>
-                                        {currentActivity.quotes.map((q, idx) => (
-                                            <div key={idx} className={styles.quoteItem}>
-                                                <span className={styles.quoteText}>{q.text}</span>
-                                                <span className={styles.quoteAuthor}>—— {q.author}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className={styles.buttonGroup}>
-                                {currentActivity.link && currentActivity.link !== '#' && (
-                                    <a
-                                        href={currentActivity.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.actionButton}
+                        {/* 以 Grid 疊合四頁內容高度，讓其他三頁自動依據內容最豐富的第 2 頁定出相同最小高度 */}
+                        <div className={styles.contentStack}>
+                            {ACTIVITIES.map((activity, idx) => {
+                                const isActive = idx === currentIndex
+                                return (
+                                    <div
+                                        key={activity.id}
+                                        className={`${styles.mainContent} ${isActive ? styles.activeContent : styles.inactiveContent}`}
+                                        aria-hidden={!isActive}
                                     >
-                                        <Search size={16} />
-                                        <span>活動詳情</span>
-                                    </a>
-                                )}
-                                <a
-                                    href="https://www.facebook.com/xinglongph2"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.actionButton}
-                                >
-                                    <Info size={16} />
-                                    <span>更多紀錄</span>
-                                </a>
-                            </div>
+                                        {activity.category && (
+                                            <div className={styles.categoryBadge}>
+                                                {activity.category}
+                                            </div>
+                                        )}
+                                        <h2 className={styles.title}>{activity.title}</h2>
+                                        <div className={styles.description}>
+                                            {activity.description.map((paragraph, pIdx) => (
+                                                <p key={pIdx} className={styles.paragraph}>
+                                                    {paragraph}
+                                                </p>
+                                            ))}
+                                            {activity.quotes && (
+                                                <div className={styles.quotesBox}>
+                                                    <div className={styles.quotesHeader}>🍲 島嶼的餐桌・活動回饋摘錄</div>
+                                                    {activity.quotes.map((q, qIdx) => (
+                                                        <div key={qIdx} className={styles.quoteItem}>
+                                                            <span className={styles.quoteText}>{q.text}</span>
+                                                            <span className={styles.quoteAuthor}>—— {q.author}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className={styles.buttonGroup}>
+                                            {activity.link && activity.link !== '#' && (
+                                                <a
+                                                    href={activity.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={styles.actionButton}
+                                                    tabIndex={isActive ? 0 : -1}
+                                                >
+                                                    <Search size={16} />
+                                                    <span>活動詳情</span>
+                                                </a>
+                                            )}
+                                            <a
+                                                href="https://www.facebook.com/xinglongph2"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={styles.actionButton}
+                                                tabIndex={isActive ? 0 : -1}
+                                            >
+                                                <Info size={16} />
+                                                <span>更多紀錄</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
 
                         <div className={styles.controls}>
@@ -161,7 +174,7 @@ const ActivityGallery = () => {
                             key={currentIndex}
                             src={currentActivity.image}
                             alt={currentActivity.title}
-                            className={`${styles.imageSlide} ${currentActivity.isSquareImage ? styles.imageSlideSquare : ''} ${styles.fadeInEffect}`}
+                            className={`${styles.imageSlide} ${styles.fadeInEffect}`}
                         />
                     </div>
                 </div>

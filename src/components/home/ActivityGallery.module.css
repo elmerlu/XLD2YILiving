@@ -21,8 +21,8 @@
         grid-template-columns: 1fr 1fr;
         /* 50:50 */
         gap: 0;
-        min-height: 700px;
-        /* Use min-height to allow expansion */
+        min-height: 780px;
+        /* 依據內容最豐富的第 2 頁（灶咖作伙＋回饋摘錄）定出統一最小高度，確保四頁切換高度完全一致 */
         padding-bottom: 0;
         /* align-items: center; Removed to allow stretch */
     }
@@ -100,18 +100,44 @@
     box-shadow: var(--shadow-md);
 }
 
+.contentStack {
+    display: grid;
+    flex: 1;
+    width: 100%;
+}
+
 .mainContent {
+    grid-area: 1 / 1;
     max-width: 600px;
     /* Increased from 480px used previously */
     margin: 0 auto;
     width: 100%;
     /* Center text block vertically in available space */
-    flex: 1;
-    /* Added back to push controls to bottom */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     /* Align to top */
+}
+
+.activeContent {
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.inactiveContent {
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.inactiveContent .categoryBadge,
+.inactiveContent .title,
+.inactiveContent .description,
+.inactiveContent .buttonGroup {
+    animation: none;
+    opacity: 0;
 }
 
 .categoryBadge {
@@ -297,60 +323,30 @@
 
 /* ... existing styles ... */
 
-.imageArea {
-    width: 100%;
-    height: 300px;
-    padding: 1rem 1.5rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.imageSlide {
-    width: 100%;
-    height: 100%;
-    max-height: 280px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-}
-
-.imageSlideSquare {
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-}
-
 @media (min-width: 968px) {
     .imageArea {
         width: 100%;
         height: 100%;
-        min-height: 560px;
         margin: 0;
         aspect-ratio: auto;
         padding: 3rem 2rem;
         background-color: transparent;
         overflow: visible;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        /* Allow shadow to show */
     }
 
     .imageSlide {
-        width: 100%;
-        height: 460px;
-        max-height: 460px;
-        object-fit: cover;
         border-radius: var(--radius-md);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        /* Stronger shadow */
     }
+}
 
-    .imageSlideSquare {
-        width: auto;
-        height: 460px;
-        max-height: 460px;
-        max-width: 100%;
-        object-fit: contain;
-    }
+.imageSlide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* transition: opacity 0.5s ease-in-out; Removed to let animation handle it */
 }
 
 @keyframes fadeIn {
