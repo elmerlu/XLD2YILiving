@@ -163,11 +163,13 @@ const ResidentEchoes = () => {
                     {displayList.map((item, index) => {
                         const imageSrc = resolveImg(item.cardImage)
                         const realIdx = index % echoesData.length
+                        const tapeColorIdx = (realIdx % 4) + 1
+                        const tapeClass = styles[`tapeColor${tapeColorIdx}`]
 
                         return (
                             <div
                                 key={`${item.id}-${index}`}
-                                className={styles.echoCard}
+                                className={`${styles.echoCard} ${tapeClass}`}
                                 style={{
                                     '--theme-color': item.themeColor,
                                     '--theme-bg': item.themeBg
@@ -184,13 +186,15 @@ const ResidentEchoes = () => {
                                 }}
                             >
                                 <div className={styles.cardImageContainer}>
-                                    <img
-                                        src={imageSrc}
-                                        alt={`${item.tag} - ${item.author} 的手寫小卡`}
-                                        className={styles.cardImg}
-                                        loading="lazy"
-                                        draggable={false}
-                                    />
+                                    <div className={styles.cardMaskFrame}>
+                                        <img
+                                            src={imageSrc}
+                                            alt={`${item.tag} - ${item.author} 的手寫小卡`}
+                                            className={styles.cardImg}
+                                            loading="lazy"
+                                            draggable={false}
+                                        />
+                                    </div>
                                     <div className={styles.zoomHint}>
                                         <ZoomIn size={15} />
                                         <span>點擊放大</span>
@@ -250,11 +254,13 @@ const ResidentEchoes = () => {
                             </button>
 
                             <div className={styles.lightboxImageWrapper}>
-                                <img
-                                    src={resolveImg(activeCard.cardImage)}
-                                    alt={`${activeCard.tag} - ${activeCard.author} 的手寫小卡`}
-                                    className={styles.lightboxImg}
-                                />
+                                <div className={`${styles.lightboxMaskFrame} ${styles[`tapeColor${(activeCardIndex % 4) + 1}`]}`}>
+                                    <img
+                                        src={resolveImg(activeCard.cardImage)}
+                                        alt={`${activeCard.tag} - ${activeCard.author} 的手寫小卡`}
+                                        className={styles.lightboxImg}
+                                    />
+                                </div>
                             </div>
 
                             <button
