@@ -34,6 +34,7 @@ const ACTIVITIES = [
             "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」"
         ],
         image: musicKitchenImg,
+        isSquareImage: true,
         link: "https://drive.google.com/file/d/1uDs7pjXG4vHbFz_taUkbn_leicG2fxl4/view"
     },
     {
@@ -173,7 +174,7 @@ const ActivityGallery = () => {
                             key={currentIndex}
                             src={currentActivity.image}
                             alt={currentActivity.title}
-                            className={`${styles.imageSlide} ${styles.fadeInEffect}`}
+                            className={`${styles.imageSlide} ${currentActivity.isSquareImage ? styles.imageSlideSquare : ''} ${styles.fadeInEffect}`}
                         />
                     </div>
                 </div>

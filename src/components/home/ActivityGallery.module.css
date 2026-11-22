@@ -323,6 +323,30 @@
 
 /* ... existing styles ... */
 
+.imageArea {
+    width: 100%;
+    padding: 1rem 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageSlide {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+/* 以其他三頁 (4:3 橫圖，高度為寬度的 75%) 的圖片高度為基準，
+   將 1:1 正方形的灶咖作伙圖片等比縮小為寬度 75%，使其高度同樣恆為 75% */
+.imageSlideSquare {
+    width: 75%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
 @media (min-width: 968px) {
     .imageArea {
         width: 100%;
@@ -332,21 +356,15 @@
         padding: 3rem 2rem;
         background-color: transparent;
         overflow: visible;
-        /* Allow shadow to show */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .imageSlide {
         border-radius: var(--radius-md);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        /* Stronger shadow */
     }
-}
-
-.imageSlide {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* transition: opacity 0.5s ease-in-out; Removed to let animation handle it */
 }
 
 @keyframes fadeIn {
