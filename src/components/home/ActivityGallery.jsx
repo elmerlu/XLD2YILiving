@@ -28,7 +28,13 @@ const ACTIVITIES = [
             "在興隆，廚房是認識鄰居最快的地方。除了烹飪教學，我們也辦共餐，讓忙碌的住戶下班後有一桌熱飯。",
             "像是「音樂灶咖」把現場演奏帶進廚房，邀請社區的料理達人和樂手老師，一邊學做菜一邊聽音樂，結束後把料理打包回家當晚餐。或是「興隆路上・島嶼餐桌」則加入飲食文學，大家從一道菜聊起各自的家鄉與記憶，並在現場寫下屬於自己的飲食故事。"
         ],
+        quotes: [
+            { text: "「對我來說，這是一碗有媽媽味道的湯，無論春夏秋冬，思念的時候就想喝上一碗。」", author: "紅茶" },
+            { text: "「外婆總拉著我說下次要提前說要回來，才有時間準備香菇雞湯。原來最深刻的牽掛是外婆的思念。」", author: "參與住戶" },
+            { text: "「豬腳煮花生，心想事成！蛋糕也好吃，不會太甜、太鹹，合現代人健康美食的口味，讚！」", author: "陳大姐" }
+        ],
         image: musicKitchenImg,
+        isSquareImage: true,
         link: "https://drive.google.com/file/d/1uDs7pjXG4vHbFz_taUkbn_leicG2fxl4/view"
     },
     {
@@ -99,6 +105,17 @@ const ActivityGallery = () => {
                                         {paragraph}
                                     </p>
                                 ))}
+                                {currentActivity.quotes && (
+                                    <div className={styles.quotesBox}>
+                                        <div className={styles.quotesHeader}>🍲 島嶼的餐桌・活動回饋摘錄</div>
+                                        {currentActivity.quotes.map((q, idx) => (
+                                            <div key={idx} className={styles.quoteItem}>
+                                                <span className={styles.quoteText}>{q.text}</span>
+                                                <span className={styles.quoteAuthor}>—— {q.author}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             <div className={styles.buttonGroup}>
@@ -144,7 +161,7 @@ const ActivityGallery = () => {
                             key={currentIndex}
                             src={currentActivity.image}
                             alt={currentActivity.title}
-                            className={`${styles.imageSlide} ${styles.fadeInEffect}`}
+                            className={`${styles.imageSlide} ${currentActivity.isSquareImage ? styles.imageSlideSquare : ''} ${styles.fadeInEffect}`}
                         />
                     </div>
                 </div>
