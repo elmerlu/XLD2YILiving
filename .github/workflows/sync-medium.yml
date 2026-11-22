@@ -76,17 +76,6 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # 先 commit 並 rebase，萬一你剛好也手動 push 過，不會互相覆蓋
-      - name: Commit updated records to main
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/mediumArticles.json
-          git commit -m "chore: auto-sync Medium articles"
-          git pull --rebase origin main
-          git push origin HEAD:main
-
       - name: Install dependencies
         if: steps.diff.outputs.changed == 'true'
         run: npm ci
@@ -100,20 +89,37 @@ jobs:
       # 部署編譯後的 dist 靜態成品至公開發布倉 (elmerlu/XLD2YILiving) 的 gh-pages 分支
       # --no-history：每次部署皆抹除舊有 gh-pages 歷史紀錄，僅保留最新編譯成品
       # -x：不印出含 token 的 repo 網址
+      # 注意：不傳 -u 參數（gh-pages 的 email-addresses 解析器會因 [bot] 方括號拋錯），
+      #       改由 git config 設定後讓 gh-pages 自動讀取。
       - name: Deploy to public gh-pages repository
         if: steps.diff.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.PUBLIC_PAGES_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           npx gh-pages --no-history -d dist -x \
             -m "chore: deploy after Medium sync" \
-            -u "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
             -r "https://x-access-token:${GH_TOKEN}@github.com/elmerlu/XLD2YILiving.git"
+
+      # 部署成功後才將更新後的 mediumArticles.json commit 回 main；
+      # 若前面 Build 或 Deploy 失敗，下次排程仍會偵測到差異並自動重試部署。
+      - name: Commit updated records to main
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/mediumArticles.json
+          git commit -m "chore: auto-sync Medium articles"
+          git pull --rebase origin main
+          git push origin HEAD:main
 
       - name: Summary
         if: always()
         run: |
-          if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+          if [ "${{ job.status }}" != "success" ]; then
+            echo "### ❌ 同步或部署過程發生錯誤，請檢查上方步驟紀錄" >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
             echo "### ✅ 有新文章或內容變動：已更新紀錄並部署" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "### ➖ 沒有新文章或內容變動：未 commit、未部署" >> "$GITHUB_STEP_SUMMARY"
